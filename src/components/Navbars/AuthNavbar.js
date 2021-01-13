@@ -40,8 +40,8 @@ class AdminNavbar extends React.Component {
         >
           <Container className="px-4">
             <NavbarBrand to="/" tag={Link}>
-              <img alt="..." src={require("assets/img/brand/argon-react-white.png")} />
-            </NavbarBrand>
+              <img alt="..." src={require("assets/img/anagkazo/anagkazo_full.png")} style={{width: 200, height: 75}}/>
+            </NavbarBrand>  
             <button className="navbar-toggler" id="navbar-collapse-main">
               <span className="navbar-toggler-icon" />
             </button>

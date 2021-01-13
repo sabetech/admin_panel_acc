@@ -1,0 +1,126 @@
+import React, {useState, useEffect} from "react";
+import {
+    
+    Card,
+    CardHeader,
+    CardBody,
+    NavItem,
+    NavLink,
+    Nav,
+    Row
+  } from "reactstrap";
+import classnames from "classnames";
+import Chart from "chart.js";
+import { Line, Bar } from "react-chartjs-2";
+import axios from 'axios';
+
+export default function Bussing_V_Center_Attn({chartOptions}){
+    const rand = () => Math.round(Math.random() * 20)
+    const [labels, setLabels] = useState([]);
+    const [bussingData, setBussingData] = useState([]);
+    const [centerServiceData, setCenterServiceData] = useState([]);
+
+
+    //get the bussing data from here ...
+    const getBussing_v_CenterValues =  async () => {
+
+        const response = await axios.get("http://anagkazo.firstlovegallery.com/api/react_admin/bussing_v_center");
+        await console.log(response);
+        await setLabels(response.data.bussingByMonth.map(item => `${item.month_name} ${item.year}`));
+        await setBussingData(response.data.bussingByMonth.map(item => `${item.number_bussed}`));
+        //await setCenterServiceData(response)
+
+    }
+
+    
+
+    const handleToggleNav = (e, index) => {
+        //index 1 -> Month 
+        //index 2 -> Week
+
+
+
+    }
+
+    useEffect(() => {
+        
+        getBussing_v_CenterValues();
+
+    },[]);
+
+    return (
+        <Card className="bg-gradient-default shadow">
+            <CardHeader className="bg-transparent">
+                <Row className="align-items-center">
+                <div className="col">
+                    <h6 className="text-uppercase text-light ls-1 mb-1">
+                    Overview
+                    </h6>
+                    <h2 className="text-white mb-0">Bussing Attn VS Center Service Attn</h2>
+                </div>
+                <div className="col">
+                    <Nav className="justify-content-end" pills>
+                    <NavItem>
+                        <NavLink
+                        className={classnames("py-2 px-3", {
+                            active: true
+                        })}
+                        href="#pablo"
+                        onClick={e => handleToggleNav(e, 1)}
+                        >
+                        <span className="d-none d-md-block">Month</span>
+                        <span className="d-md-none">M</span>
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink
+                        className={classnames("py-2 px-3", {
+                            active: false
+                        })}
+                        data-toggle="tab"
+                        href="#pablo"
+                        onClick={e => handleToggleNav(e, 2)}
+                        >
+                        <span className="d-none d-md-block">Week</span>
+                        <span className="d-md-none">W</span>
+                        </NavLink>
+                    </NavItem>
+                    </Nav>
+                </div>
+                </Row>
+            </CardHeader>
+            <CardBody>
+                <div className="chart">
+                    <Bar
+                        data={{
+                            labels: labels,
+                            datasets: [
+                            {
+                                type: 'line',
+                                label: 'Bussing',
+                                borderColor: 'rgb(54, 162, 235)',
+                                borderWidth: 2,
+                                fill: false,
+                                data: bussingData,
+                            },
+                            {
+                                type: 'line',
+                                label: 'Center Service Attn',
+                                backgroundColor: 'rgb(255, 99, 132)',
+                                data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
+                                borderColor: 'white',
+                                borderWidth: 2,
+                                fill: false,
+                            }
+                            ]
+                            }}
+                        
+                        options={chartOptions}
+                        getDatasetAtEvent={e => console.log(e)}
+                    />
+                </div>
+            </CardBody>
+        </Card>
+    );
+
+}
