@@ -48,7 +48,7 @@
     "@fortawesome/fontawesome-free": "5.12.1",
     "axios": "^0.21.1",
     "chart.js": "2.9.3",
-    "classnames": "2.2.6",
+    "classnames": "^2.2.6",
     "moment": "2.24.0",
     "node-sass": "4.13.1",
     "nouislider": "14.1.1",
