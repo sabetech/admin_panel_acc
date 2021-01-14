@@ -7,6 +7,7 @@ import {
     CardBody,
     Row
   } from "reactstrap";
+  import {BASE_URL} from "../../config/baseUrl";
 
 export default function BussingBarChart({chartOptions}){
 
@@ -15,8 +16,7 @@ export default function BussingBarChart({chartOptions}){
 
     const getMontlyBussingValues =  async () => {
 
-        const response = await axios.get("http://anagkazo.firstlovegallery.com/api/react_admin/bussing_by_month");
-        await console.log(response);
+        const response = await axios.get(`${BASE_URL}/react_admin/bussing_by_month`);
         await setLabels(response.data.map(item => `${item.month_name} ${item.year}`));
         await setBussingData(response.data.map(item => `${item.number_bussed}`));
 
