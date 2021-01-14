@@ -24,7 +24,8 @@ import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 class Header extends React.Component {
 
   state = {
-    studentsCount: 0
+    studentsCount: 0,
+    gsos: 0
   };
 
   componentDidMount(){
@@ -37,6 +38,15 @@ class Header extends React.Component {
     }).then((response) => {
       this.setState({studentsCount: response.data.length})
     }).catch(e => console.log(e));
+
+    //get gso count
+    axios({
+      url: 'https://anagkazo.firstlovegallery.com/api/admin_app/gsos',
+      method: "GET"
+    }).then((response) => {
+      this.setState({gsos: response.data.length});
+    });
+
 
   }
 
@@ -90,7 +100,7 @@ class Header extends React.Component {
                             GSOs
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            2,356
+                            {this.state.gsos}
                           </span>
                         </div>
                         <Col className="col-auto">
@@ -119,7 +129,7 @@ class Header extends React.Component {
                           >
                             Center Leaders
                           </CardTitle>
-                          <span className="h2 font-weight-bold mb-0">924</span>
+                          <span className="h2 font-weight-bold mb-0"> - </span>
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -148,12 +158,12 @@ class Header extends React.Component {
                             BSOs
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            16
+                            -
                           </span>
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-info text-white rounded-circle shadow">
-                            <i className="fas fa-percent" />
+                            <i className="fa fa-fire" />
                           </div>
                         </Col>
                       </Row>

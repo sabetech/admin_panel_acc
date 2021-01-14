@@ -13,6 +13,7 @@ import classnames from "classnames";
 import Chart from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
 import axios from 'axios';
+import {BASE_URL} from "../../config/baseUrl";
 
 export default function Bussing_V_Center_Attn({chartOptions}){
     const rand = () => Math.round(Math.random() * 20)
@@ -24,12 +25,18 @@ export default function Bussing_V_Center_Attn({chartOptions}){
     //get the bussing data from here ...
     const getBussing_v_CenterValues =  async () => {
 
-        const response = await axios.get("http://anagkazo.firstlovegallery.com/api/react_admin/bussing_v_center");
-        await console.log(response);
+        const response = await axios.get(`${BASE_URL}/react_admin/bussing_v_center`);
         await setLabels(response.data.bussingByMonth.map(item => `${item.month_name} ${item.year}`));
         await setBussingData(response.data.bussingByMonth.map(item => `${item.number_bussed}`));
-        //await setCenterServiceData(response)
-
+        await setCenterServiceData(response.data.bussingByMonth.map(({month, year}) => {
+                 let centerVal = response.data.centerValuesByMonth.find(
+                                        (item) => ((item.month === month) && (item.year === year))
+                                );
+                                if (typeof centerVal !== 'undefined'){
+                                    return centerVal.attn;
+                                }
+                                return 0;
+        }));
     }
 
     
@@ -45,7 +52,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
     useEffect(() => {
         
         getBussing_v_CenterValues();
-
+        
     },[]);
 
     return (
@@ -72,7 +79,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                         <span className="d-md-none">M</span>
                         </NavLink>
                     </NavItem>
-                    <NavItem>
+                    {/* <NavItem>
                         <NavLink
                         className={classnames("py-2 px-3", {
                             active: false
@@ -84,7 +91,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                         <span className="d-none d-md-block">Week</span>
                         <span className="d-md-none">W</span>
                         </NavLink>
-                    </NavItem>
+                    </NavItem> */}
                     </Nav>
                 </div>
                 </Row>
@@ -107,7 +114,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                                 type: 'line',
                                 label: 'Center Service Attn',
                                 backgroundColor: 'rgb(255, 99, 132)',
-                                data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
+                                data: centerServiceData,
                                 borderColor: 'white',
                                 borderWidth: 2,
                                 fill: false,
