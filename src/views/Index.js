@@ -51,6 +51,7 @@ import Bussing_V_Center_Attn from "./dashboard/bussing_v_center_attn";
 import BussingBarChart from "./dashboard/bussing_bar_chart";
 import TopBussingStudent from "./dashboard/top_bussers";
 import TopCenterAttnOffering from "./dashboard/top_centers";
+import MapMountains from "./dashboard/map_mountains";
 
 class Index extends React.Component {
   constructor(props){
@@ -76,6 +77,10 @@ class Index extends React.Component {
       <>
         <Header />
         {/* Page content */}
+        <MapMountains />
+        <div style={{height: 150}}>
+
+        </div>
         <Container className="mt--7" fluid>
           <Row>
             <Col className="mb-5 mb-xl-0" xl="8">
