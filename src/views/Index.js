@@ -52,6 +52,8 @@ import BussingBarChart from "./dashboard/bussing_bar_chart";
 import TopBussingStudent from "./dashboard/top_bussers";
 import TopCenterAttnOffering from "./dashboard/top_centers";
 import MapMountains from "./dashboard/map_mountains";
+import PrayerTopStudents from "./dashboard/prayer_top_students";
+
 
 class Index extends React.Component {
   constructor(props){
@@ -96,6 +98,14 @@ class Index extends React.Component {
             </Col>
             <Col xl="4">
               <TopCenterAttnOffering />
+            </Col>
+          </Row>
+          <Row className="mt-5">
+            <Col className="mb-5 mb-xl-0" xl="8">
+              <PrayerTopStudents />
+            </Col>
+            <Col xl="4">
+
             </Col>
           </Row>
         </Container>

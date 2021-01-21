@@ -9,18 +9,18 @@ import {
 import axios from 'axios';
 import {BASE_URL} from '../../config/baseUrl';
 
-export default function TopCenterAttnOffering(){
+export default function PrayerTopStudents(){
 
-    const [topCenters, setTopCenters] = useState([]);
+    const [topPrayingstudents, setTopPrayingStudents] = useState([]);
 
-    const getTopBussers = async () => {
-        const response = await axios.get(`${BASE_URL}/react_admin/top_centers_attn_n_offering`);
-        await console.log(response);
-        await setTopCenters(response.data);
+    const getTopPrayers = async () => {
+        const response = await axios.get(`${BASE_URL}/react_admin/top_praying_students`);
+        
+        await setTopPrayingStudents(response.data);
     }
 
     useEffect(() => {
-        getTopBussers();
+        getTopPrayers();
     },[]);
 
     return (
@@ -28,7 +28,7 @@ export default function TopCenterAttnOffering(){
         <CardHeader className="border-0">
           <Row className="align-items-center">
             <div className="col">
-              <h3 className="mb-0">Top Center Service Average</h3>
+              <h3 className="mb-0">Top Praying Students</h3>
             </div>
             <div className="col text-right">
               <Button
@@ -37,7 +37,7 @@ export default function TopCenterAttnOffering(){
                 onClick={e => e.preventDefault()}
                 size="sm"
               >
-                See all
+                Show Filter Options
               </Button>
             </div>
           </Row>
@@ -45,23 +45,24 @@ export default function TopCenterAttnOffering(){
         <Table className="align-items-center table-flush" responsive>
           <thead className="thead-light">
             <tr>
-              <th scope="col">Center</th>
-              <th scope="col">Attendance (Avg)</th>
-              <th scope="col">Offering (Avg)</th>
-              <th scope="col" />
+              <th scope="col">Index</th>
+              <th scope="col">Stuent Name</th>
+              <th scope="col">Number of Hours Prayed</th>
+              <th scope="col">Class</th>
             </tr>
           </thead>
           <tbody>
               {
-                  topCenters.map((item, index) => (
+                  topPrayingstudents.map((item, index) => (
                     <tr key={index}>
-                        <th scope="row">{item.center_name}</th>
-                        <td>{ parseFloat(item.attn).toFixed(1) }</td>
+                        <td scope="row">{item.index_number}</td>
+                        <td>{ item.name }</td>
                         <td>
                             <div className="d-flex align-items-center">
-                                <span className="mr-2">{parseFloat(item.total_offering).toFixed(2)} ghc</span>
+                                <span className="mr-2">{item.prayer_hours} hours</span>
                             </div>
                         </td>
+                        <td>{ item.class }</td>
                         <td />
                     </tr>
                   ))

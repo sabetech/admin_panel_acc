@@ -4,7 +4,10 @@ import {
     CardHeader,
     Table,
     Row,
-    Button
+    Button,
+    FormGroup,
+    Label,
+    Input
   } from "reactstrap";
 import axios from 'axios';
 import {BASE_URL} from "../../config/baseUrl";
@@ -29,6 +32,25 @@ export default function TopBussingStudent(){
                     <div className="col">
                         <h3 className="mb-0">Top 10 Bussing Students</h3>
                     </div>
+                    <div className="col">
+                    <FormGroup>
+                        <Label for="exampleSelect">Filter Options</Label>
+                        <Input type="select" name="select" id="filter_options">
+                        <option>Class</option>
+                        <option>Country</option>
+                        <option>UD/NON UD</option>
+                        <option>Community</option>
+                        </Input>
+                    </FormGroup>
+                    </div>
+                    <div className="col">
+                    <FormGroup>
+                        <Label for="exampleSelect">Filter Value</Label>
+                        <Input type="select" name="select" id="filter_value">
+                        
+                        </Input>
+                    </FormGroup>
+                    </div>
                     <div className="col text-right">
                         <Button
                         color="primary"
@@ -36,7 +58,7 @@ export default function TopBussingStudent(){
                         onClick={e => e.preventDefault()}
                         size="sm"
                         >
-                        See all
+                        Filter Options
                         </Button>
                     </div>
                 </Row>
@@ -52,8 +74,8 @@ export default function TopBussingStudent(){
                 </thead>
                 <tbody>
                     {
-                        topBussers.map((busser) => (
-                            <tr>
+                        topBussers.map((busser, index) => (
+                            <tr key={index}>
                                 <th scope="row">{busser.index_number}</th>
                                 <td>{busser.student_name}</td>
                                 <td>{busser.class}</td>
