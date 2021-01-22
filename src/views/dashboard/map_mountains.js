@@ -74,7 +74,7 @@ const MapWrapper = withScriptjs(
             <div className="col">
               <Card className="shadow border-0">
                 <MapWrapper
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5UveX2X74k_vJfuCQSvbJwuyIqqDmYGU"
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?key="
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={
                     <div

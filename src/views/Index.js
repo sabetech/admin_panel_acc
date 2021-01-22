@@ -51,7 +51,8 @@ import Bussing_V_Center_Attn from "./dashboard/bussing_v_center_attn";
 import BussingBarChart from "./dashboard/bussing_bar_chart";
 import TopBussingStudent from "./dashboard/top_bussers";
 import TopCenterAttnOffering from "./dashboard/top_centers";
-import MapMountains from "./dashboard/map_mountains";
+//import MapMountains from "./dashboard/map_mountains";
+import MapAnagkazoCenters from "./dashboard/map_anagkazo_centers";
 import PrayerTopStudents from "./dashboard/prayer_top_students";
 
 
@@ -79,7 +80,7 @@ class Index extends React.Component {
       <>
         <Header />
         {/* Page content */}
-        <MapMountains />
+        <MapAnagkazoCenters />
         <div style={{height: 150}}>
 
         </div>
