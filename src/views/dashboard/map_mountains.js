@@ -9,6 +9,7 @@ import {
 
 // reactstrap components
 import { Card, Container, Row } from "reactstrap";
+import center_locations from "../../assets/resources/centers_locations.json";
 
 const MapWrapper = withScriptjs(
     withGoogleMap(props => (
@@ -61,7 +62,9 @@ const MapWrapper = withScriptjs(
           ]
         }}
       >
+        
         <Marker position={{ lat: 5.9486601, lng: -0.1516862 }} />
+        
       </GoogleMap>
     ))
   );
@@ -74,7 +77,7 @@ const MapWrapper = withScriptjs(
             <div className="col">
               <Card className="shadow border-0">
                 <MapWrapper
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?key="
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5UveX2X74k_vJfuCQSvbJwuyIqqDmYGU"
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={
                     <div

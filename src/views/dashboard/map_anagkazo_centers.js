@@ -3,7 +3,7 @@ import GoogleMapReact from 'google-map-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-export default function MapAnagkazoCenters(){
+export default function MapAnagkazoCenters(props){
     const defaultProps = {
         center: {
           lat: 59.95,
@@ -12,16 +12,17 @@ export default function MapAnagkazoCenters(){
         zoom: 11
       };
 
-      return ( <div style={{ height: '100vh', width: '100%' }}>
+      return ( 
+      <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyC5UveX2X74k_vJfuCQSvbJwuyIqqDmYGU" }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          defaultCenter={props.center}
+          defaultZoom={props.zoom}
         >
           <AnyReactComponent
             lat={59.955413}
             lng={30.337844}
-            text="My Marker"
+            text="Sample Location"
           />
         </GoogleMapReact>
       </div>);
