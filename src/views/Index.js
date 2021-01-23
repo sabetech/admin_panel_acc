@@ -56,6 +56,7 @@ import TopCenterAttnOffering from "./dashboard/top_centers";
 import Map from "./dashboard/map_centers";
 import PrayerTopStudents from "./dashboard/prayer_top_students";
 import places from "../assets/resources/centers_locations.json";
+import CenterList from "./dashboard/center_lists";
 
 
 class Index extends React.Component {
@@ -86,20 +87,11 @@ class Index extends React.Component {
           <Row>,
             <Col className="mb-5 mb-xl-0" xl="8">
               <Map center={{ lat: 5.8997985, lng: -0.1529652 }}
-                    zoom={10}
+                    zoom={13}
                     places={places.center_coordinates} />
             </Col>
             <Col>
-              <Card className="shadow">
-                  <CardHeader className="bg-transparent">
-                      <Row className="align-items-center">
-                          <div className="col">
-                              <h3 className="mb-0">Centers</h3>
-                          </div>
-                          
-                      </Row>
-                  </CardHeader>
-              </Card>
+              <CenterList />
           </Col>
         </Row>
           
@@ -127,6 +119,7 @@ class Index extends React.Component {
             <Col className="mb-5 mb-xl-0" xl="8">
               <PrayerTopStudents />
             </Col>
+
             <Col xl="4">
 
             </Col>
