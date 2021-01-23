@@ -3,16 +3,10 @@ import {
     Card,
     CardHeader,
     CardBody,
-    Row,
-    Badge,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  Media,
-  Progress,
-  Table,
-  UncontrolledTooltip
+    Row, 
+    Media,
+    Table,
+  
   } from "reactstrap";
   import centers_locations from "../../assets/resources/centers_locations.json";
   
