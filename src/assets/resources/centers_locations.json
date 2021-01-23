@@ -1,0 +1,15 @@
+{
+    "center_coordinates":[
+        {"location": "Aburi 1", "lat_coordinate": 5.845668, "lng_coordinate": -0.176115},
+        {"location":"Aburi 2", "lat_coordinate": 5.8515, 	"lng_coordinate": -1.695},
+        {"location":"Aburi 3", "lat_coordinate": 5.848437,	"lng_coordinate": -0.17385},
+        {"location":"Aburi 4", "lat_coordinate": 5.847704, 	"lng_coordinate": -0.177519},
+        {"location":"Aburi 5", "lat_coordinate": 5.842566,	"lng_coordinate": -0.180087},
+        {"location":"Aburi 6", "lat_coordinate": 5.84574,	"lng_coordinate": -0.175604},
+        {"location":"Adukrom 1", "lat_coordinate": 6.02685602, "lng_coordinate": -0.0833478},
+        {"location":"Adukrom 2", "lat_coordinate": 5.956541,    "lng_coordinate":-0.102687},
+        {"location":"Adukrom 3", "lat_coordinate": 6.018069761,	"lng_coordinate":-0.075319782},
+        {"location":"Adukrom 4", "lat_coordinate": 5.810811, "lng_coordinate":-189720},
+        {"location":"Adukrom 5", "lat_coordinate": 5.81811, "lng_coordinate":-0.18972}
+    ]
+}
