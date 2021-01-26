@@ -22,6 +22,7 @@ import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
+import Students from "views/students/students_all";
 
 var routes = [
   {
@@ -32,10 +33,10 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/icons",
-    name: "Icons",
-    icon: "ni ni-planet text-blue",
-    component: Icons,
+    path: "/students",
+    name: "Students",
+    icon: "fa fa-users text-blue",
+    component: Students,
     layout: "/admin"
   },
   {
