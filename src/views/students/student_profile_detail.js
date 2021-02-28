@@ -267,8 +267,8 @@ export default function Student_Profile_Detail({student_id}){
       return (
         <List.Item onClick = 
         {() => {
-          setActiveDetail("Outreach");
-          setChartTitle("Outreach");
+          setActiveDetail("Bussing");
+          setChartTitle("Bussing");
 
           setChartLabels(bussing_logs.map((o) => 
             new Date(o.title)
