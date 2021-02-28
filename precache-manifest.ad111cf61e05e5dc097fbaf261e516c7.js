@@ -1,31 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c81eb60e3326127c5d4ec8d83c2e6cfd",
+    "revision": "7a6fa948eab9fb689445180c95d371ae",
     "url": "/admin_panel_acc/index.html"
   },
   {
-    "revision": "41d42204fd39c0e02173",
-    "url": "/admin_panel_acc/static/css/2.cbe95440.chunk.css"
+    "revision": "882fa255d262eb3648fa",
+    "url": "/admin_panel_acc/static/css/2.10c996ed.chunk.css"
   },
   {
-    "revision": "9b1d26e28960e8af4e5a",
+    "revision": "31cea3a1e6c6808a9c3b",
     "url": "/admin_panel_acc/static/css/main.9d17c98a.chunk.css"
   },
   {
-    "revision": "41d42204fd39c0e02173",
-    "url": "/admin_panel_acc/static/js/2.8e38101f.chunk.js"
+    "revision": "882fa255d262eb3648fa",
+    "url": "/admin_panel_acc/static/js/2.67c9acef.chunk.js"
   },
   {
-    "revision": "10737a57bbb126c8ff93a7c9d0a9db9b",
-    "url": "/admin_panel_acc/static/js/2.8e38101f.chunk.js.LICENSE.txt"
+    "revision": "f2626c168bbe0fe0da5ffd9dffae4b14",
+    "url": "/admin_panel_acc/static/js/2.67c9acef.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9b1d26e28960e8af4e5a",
-    "url": "/admin_panel_acc/static/js/main.311a3ae2.chunk.js"
+    "revision": "31cea3a1e6c6808a9c3b",
+    "url": "/admin_panel_acc/static/js/main.6354fa27.chunk.js"
   },
   {
     "revision": "8d0d562f4ec3c131ac27d52de65ecd17",
-    "url": "/admin_panel_acc/static/js/main.311a3ae2.chunk.js.LICENSE.txt"
+    "url": "/admin_panel_acc/static/js/main.6354fa27.chunk.js.LICENSE.txt"
   },
   {
     "revision": "3f996bbea6ecf2bb2473",
@@ -46,6 +46,26 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ab904daa548967670847fc3929bf50f4",
     "url": "/admin_panel_acc/static/media/bootstrap.ab904daa.jpg"
+  },
+  {
+    "revision": "13db00b7a34fee4d819ab7f9838cc428",
+    "url": "/admin_panel_acc/static/media/brand-icons.13db00b7.eot"
+  },
+  {
+    "revision": "a046592bac8f2fd96e994733faf3858c",
+    "url": "/admin_panel_acc/static/media/brand-icons.a046592b.woff"
+  },
+  {
+    "revision": "a1a749e89f578a49306ec2b055c073da",
+    "url": "/admin_panel_acc/static/media/brand-icons.a1a749e8.svg"
+  },
+  {
+    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
+    "url": "/admin_panel_acc/static/media/brand-icons.c5ebe0b3.ttf"
+  },
+  {
+    "revision": "e8c322de9658cbeb8a774b6624167c2c",
+    "url": "/admin_panel_acc/static/media/brand-icons.e8c322de.woff2"
   },
   {
     "revision": "067595ad77ecc0db9c81c8905a7eef32",
@@ -108,12 +128,40 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/admin_panel_acc/static/media/fa-solid-900.cdfec5cf.woff"
   },
   {
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/admin_panel_acc/static/media/flags.9c74e172.png"
+  },
+  {
     "revision": "2e2571256140872fb7e4f246ea786669",
     "url": "/admin_panel_acc/static/media/github.2e257125.svg"
   },
   {
     "revision": "08ea438ed3b14e63dd54516d3768e3d3",
     "url": "/admin_panel_acc/static/media/google.08ea438e.svg"
+  },
+  {
+    "revision": "0ab54153eeeca0ce03978cc463b257f7",
+    "url": "/admin_panel_acc/static/media/icons.0ab54153.woff2"
+  },
+  {
+    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
+    "url": "/admin_panel_acc/static/media/icons.8e3c7f55.eot"
+  },
+  {
+    "revision": "962a1bf31c081691065fe333d9fa8105",
+    "url": "/admin_panel_acc/static/media/icons.962a1bf3.svg"
+  },
+  {
+    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
+    "url": "/admin_panel_acc/static/media/icons.b87b9ba5.ttf"
+  },
+  {
+    "revision": "faff92145777a3cbaf8e7367b4807987",
+    "url": "/admin_panel_acc/static/media/icons.faff9214.woff"
+  },
+  {
+    "revision": "7bc0a2f6ee2d3e3ee10518655dee9ac5",
+    "url": "/admin_panel_acc/static/media/logo_anagkazo_icon.7bc0a2f6.png"
   },
   {
     "revision": "2569aaea6eaaf8cd210db7f2fa016743",
@@ -136,8 +184,24 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/admin_panel_acc/static/media/nucleo-icons.f82ec6ba.ttf"
   },
   {
-    "revision": "e2582654b8e7b6c285d5017df6427d73",
-    "url": "/admin_panel_acc/static/media/profile-cover.e2582654.jpg"
+    "revision": "701ae6abd4719e9c2ada3535a497b341",
+    "url": "/admin_panel_acc/static/media/outline-icons.701ae6ab.eot"
+  },
+  {
+    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
+    "url": "/admin_panel_acc/static/media/outline-icons.82f60bd0.svg"
+  },
+  {
+    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
+    "url": "/admin_panel_acc/static/media/outline-icons.ad97afd3.ttf"
+  },
+  {
+    "revision": "cd6c777f1945164224dee082abaea03a",
+    "url": "/admin_panel_acc/static/media/outline-icons.cd6c777f.woff2"
+  },
+  {
+    "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
+    "url": "/admin_panel_acc/static/media/outline-icons.ef60a4f6.woff"
   },
   {
     "revision": "c4eb3d0be0cf5a2d156a123bdf7fb40d",
