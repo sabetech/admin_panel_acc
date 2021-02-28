@@ -20,8 +20,8 @@ import React from "react";
 // reactstrap components
 import { Button, Container, Row, Col } from "reactstrap";
 
-class UserHeader extends React.Component {
-  render() {
+function UserHeader ({student_name, photo_url}) {
+  
     return (
       <>
         <div
@@ -29,7 +29,7 @@ class UserHeader extends React.Component {
           style={{
             minHeight: "600px",
             backgroundImage:
-              "url(" + require("assets/img/theme/profile-cover.jpg") + ")",
+              `url("https://anagkazo.firstlovegallery.com/${photo_url}")`,
             backgroundSize: "cover",
             backgroundPosition: "center top"
           }}
@@ -40,17 +40,16 @@ class UserHeader extends React.Component {
           <Container className="d-flex align-items-center" fluid>
             <Row>
               <Col lg="7" md="10">
-                <h1 className="display-2 text-white">Hello Jesse</h1>
+                <h1 className="display-2 text-white">{ student_name }</h1>
                 <p className="text-white mt-0 mb-5">
-                  This is your profile page. You can see the progress you've
-                  made with your work and manage your projects or assigned tasks
+                  This page has information about the student and his/her progress in ministerial skills
                 </p>
                 <Button
                   color="info"
                   href="#pablo"
                   onClick={e => e.preventDefault()}
                 >
-                  Edit profile
+                  To Be Determined
                 </Button>
               </Col>
             </Row>
@@ -58,7 +57,6 @@ class UserHeader extends React.Component {
         </div>
       </>
     );
-  }
 }
 
 export default UserHeader;

@@ -68,7 +68,9 @@
     "react-materialize": "^3.9.6",
     "react-router-dom": "5.1.2",
     "react-scripts": "^3.4.1",
-    "reactstrap": "8.4.1"
+    "reactstrap": "8.4.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3"
   },
   "devDependencies": {
     "@types/googlemaps": "3.39.2",

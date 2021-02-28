@@ -14,6 +14,7 @@ import {BASE_URL} from "../../config/baseUrl";
 
 export default function TopBussingStudent(){
     const [topBussers, setTopBussers] = useState([]);
+    const [hideFilterOptions, setHideFilterOptions] = useState(false);
 
     const getTopBussers = async () => {
         const response = await axios.get(`${BASE_URL}/react_admin/top_bussers`);
@@ -29,33 +30,38 @@ export default function TopBussingStudent(){
         <Card className="shadow">
             <CardHeader className="border-0">
                 <Row className="align-items-center">
-                    <div className="col">
+                    <div className="col-md-3">
                         <h3 className="mb-0">Top 10 Bussing Students</h3>
                     </div>
-                    <div className="col">
-                    <FormGroup>
-                        <Label for="exampleSelect">Filter Options</Label>
-                        <Input type="select" name="select" id="filter_options">
-                        <option>Class</option>
-                        <option>Country</option>
-                        <option>UD/NON UD</option>
-                        <option>Community</option>
-                        </Input>
-                    </FormGroup>
-                    </div>
-                    <div className="col">
-                    <FormGroup>
-                        <Label for="exampleSelect">Filter Value</Label>
-                        <Input type="select" name="select" id="filter_value">
+                    {
+                        hideFilterOptions && 
+                    
+                        <div className="col" style={{flexDirection: 'row'}}>
+                            <FormGroup>
+                                <Label for="exampleSelect">Filter Options</Label>
+                                <Input type="select" name="select" id="filter_options">
+                                <option>Class</option>
+                                <option>Country</option>
+                                <option>UD/NON UD</option>
+                                <option>Community</option>
+                                </Input>
+                            </FormGroup>
                         
-                        </Input>
-                    </FormGroup>
-                    </div>
+                            <FormGroup>
+                                <Label for="exampleSelect">Filter Value</Label>
+                                <Input type="select" name="select" id="filter_value">
+                                
+                                </Input>
+                            </FormGroup>
+                        </div>
+                    
+                    }
                     <div className="col text-right">
                         <Button
                         color="primary"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        onClick={e => {
+                            setHideFilterOptions( val => !val);
+                        }}
                         size="sm"
                         >
                         Filter Options

@@ -23,6 +23,7 @@ import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 import Students from "views/students/students_all";
+import StudentProfile from "views/students/student_profile_detail";
 
 var routes = [
   {
@@ -41,7 +42,7 @@ var routes = [
   },
   {
     path: "/maps",
-    name: "Maps",
+    name: "Ministry Skills",
     icon: "ni ni-pin-3 text-orange",
     component: Maps,
     layout: "/admin"
@@ -76,3 +77,13 @@ var routes = [
   }
 ];
 export default routes;
+
+export var app_routes = [
+  {
+    path: "/student/:id/profile",
+    name: "Students Profile",
+    icon: "ni ni-tv-2 text-primary",
+    component: StudentProfile,
+    layout: "/admin"
+  },
+];

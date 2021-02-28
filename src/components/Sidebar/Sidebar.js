@@ -127,7 +127,7 @@ class Sidebar extends React.Component {
           </button>
           {/* Brand */}
           {logo ? (
-            <NavbarBrand className="pt-0" {...navbarBrandProps} style={{backgroundColor:"#172b4d"}}>
+            <NavbarBrand className="pt-0" {...navbarBrandProps} >
               <img
                 alt={logo.imgAlt}
                 className="navbar-brand-img"
@@ -267,8 +267,8 @@ class Sidebar extends React.Component {
             <Nav className="mb-md-3" navbar>
               <NavItem className="active-pro active">
                 <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adr-admin-sidebar">
-                  <i className="ni ni-spaceship" />
-                  Upgrade to PRO
+                  <i className="ni ni-bold-right" />
+                  Logout
                 </NavLink>
               </NavItem>
             </Nav>

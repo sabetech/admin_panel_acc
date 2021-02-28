@@ -24,7 +24,7 @@ import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import AdminFooter from "components/Footers/AdminFooter.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 
-import routes from "routes.js";
+import routes, {app_routes} from "routes.js";
 
 class Admin extends React.Component {
   componentDidUpdate(e) {
@@ -47,6 +47,18 @@ class Admin extends React.Component {
       }
     });
   };
+
+  getAppRoutes = app_routes => {
+    return app_routes.map((prop, key) => {
+      return (
+        <Route
+          path={prop.layout + prop.path}
+          component={prop.component}
+          key={key}
+        />
+      )
+    });
+  }
   getBrandText = path => {
     for (let i = 0; i < routes.length; i++) {
       if (
@@ -57,6 +69,12 @@ class Admin extends React.Component {
         return routes[i].name;
       }
     }
+
+    if (path.split("/")[path.split("/").length -1] === 'profile') {
+      return "Student Profile";
+    }
+
+
     return "Brand";
   };
   render() {
@@ -67,7 +85,7 @@ class Admin extends React.Component {
           routes={routes}
           logo={{
             innerLink: "/admin/index",
-            imgSrc: require("assets/img/anagkazo/anagkazo_full.png"),
+            imgSrc: require("assets/img/brand/logo_anagkazo_icon.png"),
             imgAlt: "..."
           }}
         />
@@ -76,10 +94,13 @@ class Admin extends React.Component {
             {...this.props}
             brandText={this.getBrandText(this.props.location.pathname)}
           />
+          
           <Switch>
             {this.getRoutes(routes)}
+            {this.getAppRoutes(app_routes)}
             <Redirect from="*" to="/admin/index" />
           </Switch>
+
           <Container fluid>
             <AdminFooter />
           </Container>

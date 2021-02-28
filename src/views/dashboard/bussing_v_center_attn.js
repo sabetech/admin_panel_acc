@@ -6,6 +6,9 @@ import {
     CardBody,
     NavItem,
     NavLink,
+    FormGroup,
+    Label,
+    Input,
     Nav,
     Row
   } from "reactstrap";
@@ -65,6 +68,28 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                     </h6>
                     <h2 className="text-white mb-0">Bussing Attn VS Center Service Attn</h2>
                 </div>
+                
+                <div className="col">
+                    <FormGroup>
+                        <Label for="exampleSelect">Filter Options</Label>
+                        <Input type="select" name="select" id="filter_options">
+                        <option>Class</option>
+                        <option>Country</option>
+                        <option>UD/NON UD</option>
+                        <option>Community</option>
+                        <option>Center</option>
+                        </Input>
+                    </FormGroup>
+                </div>
+                <div className="col">
+                    <FormGroup>
+                        <Label for="exampleSelect">Filter Value</Label>
+                        <Input type="select" name="select" id="filter_value">
+                        
+                        </Input>
+                    </FormGroup>
+                </div>
+
                 <div className="col">
                     <Nav className="justify-content-end" pills>
                     <NavItem>
