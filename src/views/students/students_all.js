@@ -40,21 +40,22 @@ export default function Students(){
   useEffect(() => {
       !loaded && loadAllStudents(); //if it is false, load the students ....
 
-      !(classes > 0) && (filterOption === "class") && setFilterValue(classes.map((myclass, i) => {
+      !(classes > 0) && (filterOption === "class") && setFilterValue(
+        {key: 0, value: 'all', text: 'All'}, [...classes.map((myclass, i) => {
           return {
             key: i,
             value: myclass,
             text: myclass
           } 
-      }));
+      })]);
 
-      !(countries > 0) && (filterOption === "country") && setFilterValue(countries.map((country, i) => {
+      !(countries > 0) && (filterOption === "country") && setFilterValue({key: 0, value: 'all', text: 'All'},[...countries.map((country, i) => {
           return {
             key: i,
             value: country,
             text: country
           }
-      }));
+      })]);
 
   },[classes, countries]);
 
@@ -91,11 +92,20 @@ export default function Students(){
       break;
 
       case 'class':
-
+        if (filterValue === 'all'){
+          setStudents(all_students);
+        }else{
+          setStudents(all_students.filter((student) => student.class.includes(filterValue)));
+        }
       break;
 
       case 'country':
-        setStudents(all_students.filter((student) => student.country.includes(filterValue)));
+        if (filterValue === 'all'){
+          setStudents(all_students);
+        }else{
+          setStudents(all_students.filter((student) => student.country.includes(filterValue)));
+        }
+        
       break;
     }
 

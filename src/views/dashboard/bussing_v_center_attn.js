@@ -128,7 +128,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                             labels: labels,
                             datasets: [
                             {
-                                type: 'line',
+                                type: 'bar',
                                 label: 'Bussing',
                                 borderColor: 'rgb(54, 162, 235)',
                                 borderWidth: 2,
@@ -136,7 +136,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                                 data: bussingData,
                             },
                             {
-                                type: 'line',
+                                type: 'bar',
                                 label: 'Center Service Attn',
                                 backgroundColor: 'rgb(255, 99, 132)',
                                 data: centerServiceData,

@@ -111,9 +111,9 @@ class Index extends React.Component {
             <Col className="mb-5 mb-xl-0" xl="8">
               <TopBussingStudent />
             </Col>
-            <Col xl="4">
+            {/* <Col xl="4">
               <TopCenterAttnOffering />
-            </Col>
+            </Col> */}
           </Row>
           <Row className="mt-5">
             <Col className="mb-5 mb-xl-0" xl="8">

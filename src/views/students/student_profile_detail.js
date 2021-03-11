@@ -389,7 +389,7 @@ export default function Student_Profile_Detail({student_id}){
                     <div className="col">
                       <div className="card-profile-stats d-flex justify-content-center mt-md-5">
                         <div>
-                          <span className="heading">22</span>
+                          <span className="heading">{typeof studentProfileInformation?.student_profile === 'undefined' ? 0 : studentProfileInformation.student_profile.members.length}</span>
                           <span className="description">Members</span>
                         </div>
                         <div>
@@ -397,7 +397,7 @@ export default function Student_Profile_Detail({student_id}){
                           <span className="description">Points</span>
                         </div>
                         <div>
-                          <span className="heading">89</span>
+                          <span className="heading">{(typeof studentProfileInformation.student_bussing_history === 'undefined' ? 0:studentProfileInformation.student_bussing_history.reduce((prev, cur) => prev + cur.value, 0) / studentProfileInformation.student_bussing_history.length).toFixed(2)}</span>
                           <span className="description">Ave Bussing</span>
                         </div>
                       </div>
