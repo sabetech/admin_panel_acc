@@ -25,12 +25,13 @@ class Header extends React.Component {
 
   state = {
     studentsCount: 0,
-    gsos: 0
+    gsos: 0,
+    centerleaderCount: 0,
+    sontaLeaderCount: 0
   };
 
   componentDidMount(){
 
-    console.log("Component did mount ready");
     //get student count 
     axios({
       url: 'https://anagkazo.firstlovegallery.com/api/admin_app/students',
@@ -47,6 +48,19 @@ class Header extends React.Component {
       this.setState({gsos: response.data.length});
     });
 
+    axios({
+      url: 'https://anagkazo.firstlovegallery.com/api/admin_app/centers_count',
+      method: "GET"
+    }).then((response) => {
+      this.setState({centerleaderCount: response.data.center_count});
+    });
+
+    axios({
+      url: 'https://anagkazo.firstlovegallery.com/api/admin_app/sonta_count',
+      method: "GET"
+    }).then((response) => {
+      this.setState({sontaLeaderCount: response.data.sonta_leader_count});
+    });
 
   }
 
@@ -129,7 +143,7 @@ class Header extends React.Component {
                           >
                             Center Leaders
                           </CardTitle>
-                          <span className="h2 font-weight-bold mb-0"> - </span>
+                          <span className="h2 font-weight-bold mb-0"> {this.state.centerleaderCount} </span>
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -155,10 +169,10 @@ class Header extends React.Component {
                             tag="h5"
                             className="text-uppercase text-muted mb-0"
                           >
-                            BSOs
+                            Sonta Leaders
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            -
+                            {this.state.sontaLeaderCount}
                           </span>
                         </div>
                         <Col className="col-auto">

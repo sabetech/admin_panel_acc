@@ -48,8 +48,11 @@ import {
 
 import Header from "components/Headers/Header.js";
 import Bussing_V_Center_Attn from "./dashboard/bussing_v_center_attn";
-import BussingBarChart from "./dashboard/bussing_bar_chart";
+import BussingPieChart from "./dashboard/bussing_pie_chart";
 import TopBussingStudent from "./dashboard/top_bussers";
+import StudentBussingInfo from "./dashboard/student_bussing_info";
+import PieChartBussing from "./dashboard/pie_chart_bussing";
+
 import TopCenterAttnOffering from "./dashboard/top_centers";
 //import MapMountains from "./dashboard/map_mountains";
 //import MapAnagkazoCenters from "./dashboard/map_anagkazo_centers";
@@ -104,16 +107,18 @@ class Index extends React.Component {
               <Bussing_V_Center_Attn chartOptions />
             </Col>
             <Col xl="4">
-              <BussingBarChart chartOptions/>
+              <BussingPieChart chartOptions/>
+            </Col>
+          </Row>
+          <Row className="mt-5">
+            <Col className="mb-5 mb-xl-0" >
+              <StudentBussingInfo />
             </Col>
           </Row>
           <Row className="mt-5">
             <Col className="mb-5 mb-xl-0" xl="8">
               <TopBussingStudent />
             </Col>
-            {/* <Col xl="4">
-              <TopCenterAttnOffering />
-            </Col> */}
           </Row>
           <Row className="mt-5">
             <Col className="mb-5 mb-xl-0" xl="8">
