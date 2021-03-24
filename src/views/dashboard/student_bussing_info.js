@@ -16,31 +16,24 @@ import {BASE_URL} from "../../config/baseUrl";
 
 export default function StudentBussingInfo(){
     const [studentBussing, setStudentBussing] = useState([]);
-    const [bussingCurrentPage, setBussingCurrentPage] = useState([]);
+    
     const [hideFilterOptions, setHideFilterOptions] = useState(false);
     const [bussingDate, setBussingDate] = useState("");
-    const [page, setPage] = useState(1);//current page
-    const PAGE_COUNT = 15;
+    
 
     const getStudentBussingInfo = async (date) => {
-        const response = await axios.get(`${BASE_URL}/react_admin/student_bussing?date=${date}`);        
+        const response = await axios.get(`${BASE_URL}/react_admin/town_bussing_aggregate?date=${date}`);        
         await setStudentBussing(response.data);
-        setPageData(page);
     }
-
-    const setPageData = (page_number) => {
-        let pageData = studentBussing.slice(((page_number - 1) * PAGE_COUNT), ((page_number - 1) * PAGE_COUNT) + PAGE_COUNT);
-        setBussingCurrentPage(pageData);
-    }
-
     useEffect(() => {
         let defaultDate = moment().startOf('week');
         setBussingDate(moment(defaultDate).format("YYYY-MM-DD"));
         getStudentBussingInfo(moment(defaultDate).format("YYYY-MM-DD"));
-    },[bussingCurrentPage]);
+    },[]);
 
     const handleDateChange = (obj) => {
         let selectedDate = moment(obj.startDate).format("YYYY-MM-DD");
+        console.log(selectedDate)
         setBussingDate(selectedDate);
         getStudentBussingInfo(selectedDate);
     }
@@ -50,7 +43,7 @@ export default function StudentBussingInfo(){
             <CardHeader className="border-0">
                 <Row className="align-items-center">
                     <div className="col-md-4">
-                        <h3 className="mb-0">Students Bussing Information<br />on {moment(bussingDate).format("DD-MMM-YYYY")}</h3>
+                        <h3 className="mb-0">Constituency Bussing on<br />on {moment(bussingDate).format("DD-MMM-YYYY")}</h3>
                     </div>
                     {
                         hideFilterOptions && 
@@ -110,25 +103,27 @@ export default function StudentBussingInfo(){
             <Table celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Index Number</Table.HeaderCell>
-                        <Table.HeaderCell>Student Name</Table.HeaderCell>
-                        <Table.HeaderCell>Class</Table.HeaderCell>
-                        <Table.HeaderCell>Present</Table.HeaderCell>
-                        <Table.HeaderCell>Number Bussed</Table.HeaderCell>
+                        <Table.HeaderCell>Constituency</Table.HeaderCell>
+                        <Table.HeaderCell>Con Rep</Table.HeaderCell>
+                        <Table.HeaderCell>Total Number Bussed</Table.HeaderCell>
+                        <Table.HeaderCell>Total Students Present</Table.HeaderCell>
+                        <Table.HeaderCell>Total Students that Bussed</Table.HeaderCell>
+                        <Table.HeaderCell>Total Students that Didn't Bussed</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
                     {
-                        bussingCurrentPage.map((item, key) => (
+                        studentBussing.map((item, key) => (
                             <Table.Row key={key}>
                                 <Table.Cell>
-                                    <SmLabel>{item.student_addmission_number}</SmLabel>
+                                    <SmLabel>{item.region_name}</SmLabel>
                                 </Table.Cell>
-                                <Table.Cell>{item.name}</Table.Cell>
-                                <Table.Cell>{item.student_class}</Table.Cell>
-                                <Table.Cell>{item.present}</Table.Cell>
-                                <Table.Cell>{item.number_bussed}</Table.Cell>
+                                <Table.Cell>{item.con_rep}</Table.Cell>
+                                <Table.Cell>{item.bussingStats.totalNumberBussed}</Table.Cell>
+                                <Table.Cell>{item.bussingStats.totalStudentsPresent}</Table.Cell>
+                                <Table.Cell>{item.bussingStats.totalStudentsThatBussed}</Table.Cell>
+                                <Table.Cell>{item.bussingStats.totalStudentsThatDidntBus}</Table.Cell>
                             </Table.Row>
                             )
                         )
@@ -137,18 +132,7 @@ export default function StudentBussingInfo(){
                 <Table.Footer>
                     <Table.Row>
                         <Table.HeaderCell colSpan='5'>
-                            <Menu floated='right' pagination>
-                                <Menu.Item as='a' icon>
-                                    <Icon name='chevron left' />
-                                </Menu.Item>
-                                <Menu.Item as='a'>1</Menu.Item>
-                                <Menu.Item as='a'>2</Menu.Item>
-                                <Menu.Item as='a'>3</Menu.Item>
-                                <Menu.Item as='a'>4</Menu.Item>
-                                <Menu.Item as='a' icon>
-                                    <Icon name='chevron right' />
-                                </Menu.Item>
-                            </Menu>
+                            {/* put totals here */}
                         </Table.HeaderCell>
                     </Table.Row>
                 </Table.Footer>

@@ -114,7 +114,7 @@ class Header extends React.Component {
                             tag="h5"
                             className="text-uppercase text-muted mb-0"
                           >
-                            Community Reps
+                            Consituency Reps
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
                             {this.state.gsos}

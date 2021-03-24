@@ -35,6 +35,7 @@ export default function Students(){
   const [filterOption, setFilterOption] = useState("name");
   const [filterValues, setFilterValue] = useState([]);
   const [currentPlaceholder, setPlaceholder] = useState("Search for name");
+  const [currentHeading, setCurrentHeading] = useState("Students");
 
 
   useEffect(() => {
@@ -80,7 +81,7 @@ export default function Students(){
   }
 
   const loadFilteredStudents = (filteredOption, filterValue) => {
-
+    setCurrentHeading("Filtering Students by " + filteredOption)
     switch(filteredOption){
 
       case 'name':
@@ -216,7 +217,7 @@ export default function Students(){
               <div className="col">
                 <Card className=" shadow">
                   <CardHeader className=" bg-transparent">
-                    <h3 className=" mb-0">Students</h3>
+                    <h3 className=" mb-0">{currentHeading}</h3>
                     <div className="row">
                         <div className="col">
                           <FormGroup>
