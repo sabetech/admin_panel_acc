@@ -27,6 +27,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
     const [bussingData, setBussingData] = useState([]);
     const [centerServiceData, setCenterServiceData] = useState([]);
     const [chartVisibility, setChartVisibility] = useState(true);
+    const [barChartOptionsDisenabled, setBarChartOptionsDisenabled] = useState(true);
 
 
     //get the bussing data from here ...
@@ -63,7 +64,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
     }
 
     return (
-        <Reveal animated='move down' disabled={false}>
+        <Reveal animated='move down' disabled={barChartOptionsDisenabled}>
             <Reveal.Content visible={chartVisibility} style={{width:'100%'}}>
                 <Card className="bg-gradient-default shadow">
                     <CardHeader className="bg-transparent">
@@ -82,7 +83,12 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                                         className={classnames("py-2 px-3", {
                                             active: true
                                         })}
-                                        onClick={ e => setChartVisibility(true) }
+                                        onClick={ e => {
+                                            setBarChartOptionsDisenabled(false);
+                                            setChartVisibility(true)
+                                        } 
+                                            
+                                        }
                                         >
                                         <span className="d-none d-md-block">Options</span>
                                         <span className="d-md-none">M</span>
@@ -177,8 +183,15 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                         </Row>
                         <Row >
                             <div className="col">
+                                <Label>Date Range</Label>
                                 <DateRangePicker
                                     initialSettings={{ startDate: '01/01/2020', endDate: '01/15/2020' }}
+                                    onShow={() => {
+                                        //setBarChartOptionsDisenabled(true);
+                                    }}
+                                    onClick={() => {
+                                        setBarChartOptionsDisenabled(true);
+                                    }}
                                 >
                                     <input type="text" className="form-control" />
                                 </DateRangePicker>

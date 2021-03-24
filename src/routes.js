@@ -24,6 +24,7 @@ import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
 import Students from "views/students/students_all";
 import StudentProfile from "views/students/student_profile_detail";
+import CenterVenueMap from "views/maps/center_venue_locations";
 
 var routes = [
   {
@@ -38,6 +39,13 @@ var routes = [
     name: "Students",
     icon: "fa fa-users text-blue",
     component: Students,
+    layout: "/admin"
+  },
+  {
+    path: "/center_google_map",
+    name: "Center Venue Location",
+    icon: "fa fa-map-marker-alt text-blue",
+    component: CenterVenueMap,
     layout: "/admin"
   }
   // {

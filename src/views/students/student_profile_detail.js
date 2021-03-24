@@ -42,7 +42,6 @@ export default function Student_Profile_Detail({student_id}){
         return axios.get(`${BASE_URL}/react_admin${location.pathname}`)
           .then((response) => 
           {
-            console.log(response.data);
             setStudentProfileInformation(response.data);
           });
     }
@@ -418,18 +417,26 @@ export default function Student_Profile_Detail({student_id}){
                     </div>
                     <div>
                       <i className="ni education_hat mr-2" />
-                      <Badge color="success" pill>
-                        Center Leader
-                      </Badge>
-                      <Badge color="info" pill>
+                      {
+                        studentProfileInformation.student_profile?.student_roles?.map((item) => {
+                          return (
+                            <Badge color="success" pill>
+                              {item.pastoral_role.role}
+                            </Badge>
+                            )
+                        })
+                      }
+                      
+                      {/* <Badge color="info" pill>
                         Basonta Leader
-                      </Badge>
+                      </Badge> */}
                     </div>
                     <hr className="my-4" />
                     <p>
-                      Ryan — the name taken by Melbourne-raised, Brooklyn-based
-                      Nick Murphy — writes, performs and records all of his own
-                      music.
+                      {
+                        studentProfileInformation?.student_profile?.student_remarks
+                      }
+                      
                     </p>
                   </div>
                 </CardBody>

@@ -17,6 +17,7 @@
 */
 import React from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 // reactstrap components
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
@@ -75,8 +76,9 @@ class Header extends React.Component {
                 <Col lg="6" xl="3">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
+                    <Link to={"/admin/students"}>
                       <Row>
-                        <div className="col">
+                        <Col>
                           <CardTitle
                             tag="h5"
                             className="text-uppercase text-muted mb-0"
@@ -86,13 +88,14 @@ class Header extends React.Component {
                           <span className="h2 font-weight-bold mb-0">
                             {this.state.studentsCount}
                           </span>
-                        </div>
+                        </Col>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
                             <i className="fas fa-chart-bar" />
                           </div>
                         </Col>
                       </Row>
+                    </Link>
                       {/* <p className="mt-3 mb-0 text-muted text-sm">
                         <span className="text-success mr-2">
                           <i className="fa fa-arrow-up" /> 3.48%

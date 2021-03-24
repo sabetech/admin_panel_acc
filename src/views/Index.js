@@ -87,21 +87,7 @@ class Index extends React.Component {
         <Header />
         {/* Page content */}
         <Container className="mt--7" fluid>
-          <Row>,
-            <Col className="mb-5 mb-xl-0" xl="8">
-              <Map center={{ lat: 5.8997985, lng: -0.1529652 }}
-                    zoom={13}
-                    places={places.center_coordinates} />
-            </Col>
-            <Col>
-              <CenterList />
-          </Col>
-        </Row>
           
-          <div style={{height: 80}}>
-
-          </div>
-        
           <Row>
             <Col className="mb-5 mb-xl-0" xl="8">
               <Bussing_V_Center_Attn chartOptions />
