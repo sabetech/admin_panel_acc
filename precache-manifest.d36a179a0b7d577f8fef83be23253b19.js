@@ -1,31 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4af6ce4f7d5523ae742441393e1f6b2f",
+    "revision": "f76e126c2b250da8c21771f3001bef7f",
     "url": "/admin_panel_acc/index.html"
   },
   {
-    "revision": "07a30d3ec295aeb0525d",
+    "revision": "ff0f00e93e3b21d443cf",
     "url": "/admin_panel_acc/static/css/2.26fbdfd9.chunk.css"
   },
   {
-    "revision": "36be55820a66b73ddb45",
+    "revision": "13c4543c84ef706e06ff",
     "url": "/admin_panel_acc/static/css/main.9d17c98a.chunk.css"
   },
   {
-    "revision": "07a30d3ec295aeb0525d",
-    "url": "/admin_panel_acc/static/js/2.88e92380.chunk.js"
+    "revision": "ff0f00e93e3b21d443cf",
+    "url": "/admin_panel_acc/static/js/2.cff21fb7.chunk.js"
   },
   {
     "revision": "5b48bca705613ec4f99f3ae2e66c33f9",
-    "url": "/admin_panel_acc/static/js/2.88e92380.chunk.js.LICENSE.txt"
+    "url": "/admin_panel_acc/static/js/2.cff21fb7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "36be55820a66b73ddb45",
-    "url": "/admin_panel_acc/static/js/main.3de96999.chunk.js"
+    "revision": "13c4543c84ef706e06ff",
+    "url": "/admin_panel_acc/static/js/main.3da27c4f.chunk.js"
   },
   {
     "revision": "8d0d562f4ec3c131ac27d52de65ecd17",
-    "url": "/admin_panel_acc/static/js/main.3de96999.chunk.js.LICENSE.txt"
+    "url": "/admin_panel_acc/static/js/main.3da27c4f.chunk.js.LICENSE.txt"
   },
   {
     "revision": "3f996bbea6ecf2bb2473",
