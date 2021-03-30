@@ -25,6 +25,8 @@ export default function Bussing_V_Center_Attn({chartOptions}){
     
     const [labels, setLabels] = useState([]);
     const [bussingData, setBussingData] = useState([]);
+    const [bussingData_stnds, setBussingData_stnds] = useState([]);
+    const [bussingData_total, setBussingData_total] = useState([]);
     const [centerServiceData, setCenterServiceData] = useState([]);
     const [chartVisibility, setChartVisibility] = useState(true);
     const [barChartOptionsDisenabled, setBarChartOptionsDisenabled] = useState(true);
@@ -35,7 +37,11 @@ export default function Bussing_V_Center_Attn({chartOptions}){
 
         const response = await axios.get(`${BASE_URL}/react_admin/bussing_v_center`);
         await setLabels(response.data.bussingByMonth.map(item => `${item.month_name} ${item.year}`));
-        await setBussingData(response.data.bussingByMonth.map(item => `${item.number_bussed}`));
+        
+        await setBussingData(response.data.bussingByMonth.map(item => `${item.averageBussing.toFixed(2)}`));
+        await setBussingData_stnds(response.data.bussingByMonth.map(item => `${item.student_count_avg.toFixed(2)}`));
+        await setBussingData_total(response.data.bussingByMonth.map(item => `${item.twnPlusStudent.toFixed(2)}`));
+        
         await setCenterServiceData(response.data.bussingByMonth.map(({month, year}) => {
                  let centerVal = response.data.centerValuesByMonth.find(
                                         (item) => ((item.month === month) && (item.year === year))
@@ -106,21 +112,28 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                                     datasets: [
                                     {
                                         type: 'bar',
-                                        label: 'Bussing',
+                                        label: 'Town Bussing Average',
                                         borderColor: 'rgb(54, 162, 235)',
+                                        backgroundColor: 'rgb(255, 99, 132)',
                                         borderWidth: 2,
                                         data: bussingData,
+                                    },
+                                    {
+                                        type: 'bar',
+                                        label: 'Students Present Average',
+                                        borderColor: 'rgb(54, 162, 235)',
+                                        backgroundColor: 'rgb(162, 54, 75)',
+                                        borderWidth: 2,
+                                        data: bussingData_stnds
+                                    },
+                                    {
+                                        type: 'bar',
+                                        label: 'Total Average Attendance',
+                                        borderColor: 'rgb(54, 162, 235)',
+                                        backgroundColor: 'rgb(74, 235, 162)',
+                                        borderWidth: 2,
+                                        data: bussingData_total
                                     }
-                                    // ,
-                                    // {
-                                    //     type: 'bar',
-                                    //     label: 'Center Service Attn',
-                                    //     backgroundColor: 'rgb(255, 99, 132)',
-                                    //     data: centerServiceData,
-                                    //     borderColor: 'white',
-                                    //     borderWidth: 2,
-                                    //     fill: false,
-                                    // }
                                     ]
                                     }}
                                 

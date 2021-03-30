@@ -22,7 +22,7 @@ export default function BussingPieChart({chartOptions}){
 
         const response = await axios.get(`${BASE_URL}/react_admin/bussing_twn_v_students`);
         await setLabels(response.data.labels);
-        await setBussingData(response.data.data);
+        await setBussingData(response.data.data.map(val => val.toFixed(2)));
 
     };
 

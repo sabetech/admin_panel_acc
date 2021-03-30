@@ -90,10 +90,10 @@ class Index extends React.Component {
           
           <Row>
             <Col className="mb-5 mb-xl-0" xl="8">
-              <Bussing_V_Center_Attn chartOptions />
+              {chartOptions && <Bussing_V_Center_Attn chartOptions />}
             </Col>
             <Col xl="4">
-              <BussingPieChart chartOptions/>
+              {chartOptions && <BussingPieChart chartOptions/>}
             </Col>
           </Row>
           <Row className="mt-5">
