@@ -74,6 +74,10 @@ class Admin extends React.Component {
       return "Student Profile";
     }
 
+    if (path === "/admin/advanced/upload-students"){
+      return "Upload Students";
+    }
+
 
     return "Brand";
   };

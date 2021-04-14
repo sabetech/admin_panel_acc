@@ -28,11 +28,19 @@ export default function Students(){
   const [all_students, setAllStudents] = useState([]);
   const [classes, setClasses] = useState([]);
   const [countries, setCountries] = useState([]);
-
+  const [urlParams, setUrlParams] = useState({});
 
   useEffect(() => {
     
       !loaded && loadAllStudents(); //if it is false, load the students ....
+      var searchParams = new URLSearchParams(window.location.href);
+
+      if (searchParams.get("filter_option") === 'role'){
+          setUrlParams({
+              filter_option: searchParams.get("filter_option"),
+              filter_value: searchParams.get("filter_value")
+          }); 
+      }
 
   },[students]);
 
@@ -58,7 +66,7 @@ export default function Students(){
                 <Card className=" shadow">
                   <CardHeader className=" bg-transparent">
                     <h3 className=" mb-0">{currentHeading}</h3>
-                    {all_students.length > 0 && <StudentFilterBox all_students={all_students} setFilteredStudents={setStudents} setCurrentHeading={setCurrentHeading} />}
+                    {all_students.length > 0 && <StudentFilterBox all_students={all_students} setFilteredStudents={setStudents} setCurrentHeading={setCurrentHeading} filterParams={urlParams}/>}
                   </CardHeader>
                   <CardBody>
                     <Row className=" icon-examples">

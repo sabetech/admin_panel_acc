@@ -132,7 +132,7 @@ class Header extends React.Component {
                 <Col lg="6" xl="3">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
-                        <Link to={"/admin/students"}>
+                        <Link to={"/admin/students?params=true&filter_option=role&filter_value=5"}>
                           <Row>
                             <div className="col">
                               <CardTitle
@@ -156,6 +156,7 @@ class Header extends React.Component {
                 <Col lg="6" xl="3">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
+                    <Link to={"/admin/students?params=true&filter_option=role&filter_value=6"} >
                       <Row>
                         <div className="col">
                           <CardTitle
@@ -174,12 +175,7 @@ class Header extends React.Component {
                           </div>
                         </Col>
                       </Row>
-                      {/* <p className="mt-3 mb-0 text-muted text-sm">
-                        <span className="text-success mr-2">
-                          <i className="fas fa-arrow-up" /> 12%
-                        </span>{" "}
-                        <span className="text-nowrap">Since last month</span>
-                      </p> */}
+                      </Link>
                     </CardBody>
                   </Card>
                 </Col>

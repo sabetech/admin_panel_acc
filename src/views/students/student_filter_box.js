@@ -4,11 +4,15 @@ import {
   } from "reactstrap";
 import axios from 'axios';
 import {BASE_URL} from "../../config/baseUrl";
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react';
+import { useLocation } from "react-router-dom";
+import { useParams } from "react-router";
 
 
-export default function StudentFilterBox({all_students, setFilteredStudents, setCurrentHeading}){
-    const filterOptions = [
+
+export default function StudentFilterBox({all_students, setFilteredStudents, setCurrentHeading, filterParams}){
+  
+  const filterOptions = [
         {
             key: 'name',
             text: 'Name',
@@ -46,11 +50,33 @@ export default function StudentFilterBox({all_students, setFilteredStudents, set
           }
     ];
     const [filterOption, setFilterOption] = useState("");
+    const [selectedFilterValue, setSelectedFilterValue] = useState("");
+    const [filterText, setFilterText] = useState("");
     const [currentPlaceholder, setPlaceholder] = useState("");
     
     const [filterValues, setFilterValues] = useState([]);
     const [loading, setLoading] = useState(false);
-    
+
+    useEffect(() => {
+      
+      if (filterParams != null){
+        setFilterOption(filterParams.filter_option);
+        loadRoles();
+        setCurrentHeading("Students Filtering By "+filterParams.filter_option?.toUpperCase()); 
+        setPlaceholder("Filter By Student Roles");
+        
+      }
+      
+    },[]);
+
+    const filterValueCallbackFn = () => {
+      if (filterParams != null){
+          console.log(filterParams.filter_value);
+          setSelectedFilterValue(filterParams.filter_value);
+          loadFilteredStudents({value: filterParams.filter_value});
+      }
+    }
+
     const selectFilterOption = (selectedOption) => {
         
         setFilterOption(selectedOption.value);
@@ -142,13 +168,17 @@ export default function StudentFilterBox({all_students, setFilteredStudents, set
         
         break;
     
-        //   case 'center':
-        //     setPlaceholder("Filter By Center");
-        //     loadCenters();
-        //   break;
+        case 'center':
+          setPlaceholder("Filter By Center");
+          loadCenters();
+        break;
     
-        }
+        case 'role':
+          setPlaceholder("Filter By Student Roles");
+          loadRoles()  ;
+        break;
       }
+    }
 
       const loadCommunities = () => {
         setLoading(true);
@@ -169,9 +199,46 @@ export default function StudentFilterBox({all_students, setFilteredStudents, set
               });
     }
 
+    const loadCenters = () => {
+      setLoading(true);
+      return axios.get(`${BASE_URL}/admin_app/centers`)
+                    .then((response) => 
+                    {
+                      setFilterValues([{key: 0, value: 'all', text: 'All Centers'},
+                      ...response.data.map((center) => {
+                          return {
+                            key: center.id,
+                            value: center.center_name,
+                            text: center.center_name
+                          }
+                      })]);
+                      setLoading(false);
+                    });
+      
+    }
+
+    const loadRoles = () => {
+      setLoading(true);
+      return axios.get(`${BASE_URL}/react_admin/admin_app/pastoral_roles`)
+                .then((response) => {
+                  setFilterValues([{key: 0, value: 'all', text: 'All Roles'},
+                  ...response.data.map((role) => {
+                    return {
+                      key: role.id,
+                      value: role.id,
+                      text: role.role
+                    }
+                })]);
+                setLoading(false);
+                filterValueCallbackFn()
+                })
+    }
+
       const loadFilteredStudents = (filterValue) => {
         
-        //setCurrentHeading((prev) => prev + ` - (${filterValue})`);
+        setFilterText(filterValue.text);
+        setSelectedFilterValue(filterValue.value);
+
         switch(filterOption){
     
           case 'name':
@@ -214,29 +281,25 @@ export default function StudentFilterBox({all_students, setFilteredStudents, set
             setFilteredStudents(all_students.filter((student) => student?.center?.region_id.toString().includes(filterValue.value)));
           }
         break;
-      
-      
-      }
 
+        case 'center':
+          if (filterValue === 'all'){
+            setFilteredStudents(all_students);
+          }else{
+            setFilteredStudents(all_students.filter((student) => student?.center?.center_name.toString().includes(filterValue.value)));
+          }
+        break;
 
-        
-    
-      }
+        case 'role':
+          if (filterValue === 'all'){
+            setFilteredStudents(all_students);
+          }else{
+            setFilteredStudents(all_students.filter((student) => student?.student_roles?.some(el => el.role_id == filterValue.value)));
+          }
+          break;
+      }  
+    }
   
-    // const loadCenters = () => {
-    //   return axios.get(`${BASE_URL}/admin_app/centers`)
-    //                 .then((response) => 
-    //                 {
-    //                   setFilterValue(response.data.map((center) => {
-    //                       return {
-    //                         key: center.id,
-    //                         value: center.center_name,
-    //                         text: center.center_name
-    //                       }
-    //                   }));
-    //                 });
-    // }
-
     return (
         <div className="row">
             <div className="col">
@@ -246,6 +309,7 @@ export default function StudentFilterBox({all_students, setFilteredStudents, set
                     fluid
                     selection
                     options={filterOptions}
+                    value={filterOption}
                     onChange={(e, x) => selectFilterOption(x)}
                 />
                 
@@ -256,6 +320,7 @@ export default function StudentFilterBox({all_students, setFilteredStudents, set
                     placeholder={currentPlaceholder}
                     fluid
                     search
+                    value={selectedFilterValue}
                     selection
                     onChange={(e, x) => loadFilteredStudents(x)}
                     options={filterValues}

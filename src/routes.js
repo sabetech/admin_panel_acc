@@ -26,6 +26,8 @@ import Students from "views/students/students_all";
 import StudentProfile from "views/students/student_profile_detail";
 import CenterVenueMap from "views/maps/center_venue_locations";
 
+import UploadStudents from "components/Advanced/uploadStudentsFromExcel";
+
 var routes = [
   {
     path: "/index",
@@ -94,4 +96,11 @@ export var app_routes = [
     component: StudentProfile,
     layout: "/admin"
   },
+  {
+    path: "/advanced/upload-students",
+    name: "Upload Students",
+    icon: "ni ni-cloud-upload-96",
+    component: UploadStudents,
+    layout: "/admin"
+  }
 ];
