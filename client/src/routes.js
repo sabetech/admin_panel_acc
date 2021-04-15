@@ -97,7 +97,7 @@ export var app_routes = [
     layout: "/admin"
   },
   {
-    path: "/advanced/upload-students",
+    path: "/upload-students",
     name: "Upload Students",
     icon: "ni ni-cloud-upload-96",
     component: UploadStudents,

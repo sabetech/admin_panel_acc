@@ -246,7 +246,7 @@ class Sidebar extends React.Component {
             {/* Navigation */}
             <Nav className="mb-md-3" navbar>
               <NavItem>
-                <NavLink href={"/admin/advanced/upload-students"}>
+                <NavLink href={"/admin/upload-students"}>
                   <i className="ni ni-cloud-upload-96" />
                   Upload Students with Excel
                 </NavLink>
