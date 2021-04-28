@@ -36,6 +36,7 @@ export default function UploadStudents(){
     const [uploaded, setUploaded] = useState(false);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [numberOfStudentsUploaded, setNumberOfStudentsUploaded] = useState(0);
 
     const selectFile = (event) => {
         var files = event.target.files, f = files[0];
@@ -171,8 +172,8 @@ export default function UploadStudents(){
             data: formData
         });
 
-        console.log(response);
         await renderOnGrid(response.data);
+        await setNumberOfStudentsUploaded(response.data.length);
         setLoading(false);
         setOpen(true);
         
@@ -180,7 +181,7 @@ export default function UploadStudents(){
 
     return (
         <>
-        <Header_Plain />
+        <Header_Plain title={"Upload Students from Fedena(Excel)"} />
         <Container className="mt--7" fluid>
             
             {!loading ? 
@@ -217,7 +218,7 @@ export default function UploadStudents(){
              <div style={{ height: 700, width: '100%' }}>
                 <Card className="shadow">
                     <CardHeader className=" bg-transparent">
-                        <h3 className=" mb-0">Uploaded Students</h3>
+                        <h3 className=" mb-0">Uploaded Students - {numberOfStudentsUploaded} Students Uploaded</h3>
                     </CardHeader>
                     <CardBody style={{ height: 700, width: '100%' }}>
                         <DataGrid rows={rows} columns={columns} pageSize={50}/>

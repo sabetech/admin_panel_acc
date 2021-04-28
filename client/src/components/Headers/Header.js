@@ -31,12 +31,15 @@ class Header extends React.Component {
     sontaLeaderCount: 0
   };
 
-  componentDidMount(){
+  cancelTokenSource = null;
 
+  componentDidMount(){
+    this.cancelTokenSource = axios.CancelToken.source();
     //get student count 
     axios({
       url: 'https://anagkazo.firstlovegallery.com/api/admin_app/students',
-      method: 'GET'
+      method: 'GET',
+      cancelToken: this.cancelTokenSource.token
     }).then((response) => {
       this.setState({studentsCount: response.data.length})
     }).catch(e => console.log(e));
@@ -44,25 +47,32 @@ class Header extends React.Component {
     //get gso count
     axios({
       url: 'https://anagkazo.firstlovegallery.com/api/admin_app/gsos',
-      method: "GET"
+      method: "GET",
+      cancelToken: this.cancelTokenSource.token
     }).then((response) => {
       this.setState({gsos: response.data.length});
     });
 
     axios({
       url: 'https://anagkazo.firstlovegallery.com/api/admin_app/centers_count',
-      method: "GET"
+      method: "GET",
+      cancelToken: this.cancelTokenSource.token
     }).then((response) => {
       this.setState({centerleaderCount: response.data.center_count});
     });
 
     axios({
       url: 'https://anagkazo.firstlovegallery.com/api/admin_app/sonta_count',
-      method: "GET"
+      method: "GET",
+      cancelToken: this.cancelTokenSource.token
     }).then((response) => {
       this.setState({sontaLeaderCount: response.data.sonta_leader_count});
     });
 
+  }
+
+  componentWillUnmount(){
+    this.cancelTokenSource.cancel("with a message?");
   }
 
   render() {

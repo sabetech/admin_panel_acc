@@ -30,6 +30,7 @@ export default function Students(){
   const [countries, setCountries] = useState([]);
   const [urlParams, setUrlParams] = useState({});
 
+  let unmounted = false;
   useEffect(() => {
     
       !loaded && loadAllStudents(); //if it is false, load the students ....
@@ -42,6 +43,10 @@ export default function Students(){
           }); 
       }
 
+      return () => {
+        unmounted = true;
+      }
+
   },[students]);
 
   const loadAllStudents = () => {
@@ -49,6 +54,7 @@ export default function Students(){
     return axios.get(`${BASE_URL}/react_admin/students_all`)
           .then((response) => 
           {
+            if (unmounted) return;
             setStudents(response.data.items);
             setAllStudents(response.data.items);
 

@@ -62,12 +62,11 @@ export default function StudentFilterBox({all_students, setFilteredStudents, set
       if (filterParams != null){
         setFilterOption(filterParams.filter_option);
         loadRoles();
-        setCurrentHeading("Students Filtering By "+filterParams.filter_option?.toUpperCase()); 
+        setCurrentHeading("Students Filtering: "+filterParams.filter_option?.toUpperCase()||"None"); 
         setPlaceholder("Filter By Student Roles");
-        
       }
       
-    },[]);
+    },[filterParams]);
 
     const filterValueCallbackFn = () => {
       if (filterParams != null){

@@ -60,6 +60,10 @@ export default function Bussing_V_Center_Attn({chartOptions}){
     useEffect(() => {
         
         getBussing_v_CenterValues();
+
+        return () => {
+            
+        }
         
     },[]);
 
@@ -137,7 +141,7 @@ export default function Bussing_V_Center_Attn({chartOptions}){
                                     ]
                                     }}
                                 
-                                options={chartOptions}
+                                // options={chartOptions}
                                 getDatasetAtEvent={e => console.log(e)}
                             />
                         </div>

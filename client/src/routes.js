@@ -25,6 +25,8 @@ import Icons from "views/examples/Icons.js";
 import Students from "views/students/students_all";
 import StudentProfile from "views/students/student_profile_detail";
 import CenterVenueMap from "views/maps/center_venue_locations";
+import ConstituencyDetail from "views/dashboard/dashboard-details/constituency-data-details";
+import UploadBussingInfo from "components/Advanced/uploadBussingInfo";
 
 import UploadStudents from "components/Advanced/uploadStudentsFromExcel";
 
@@ -97,10 +99,25 @@ export var app_routes = [
     layout: "/admin"
   },
   {
+    path: "/constituency/:id",
+    name: "Constituency",
+    icon: "ni ni-tv-2 text-primary",
+    component: ConstituencyDetail,
+    layout: '/admin'
+    
+  },
+  {
     path: "/advanced/upload-students",
     name: "Upload Students",
     icon: "ni ni-cloud-upload-96",
     component: UploadStudents,
+    layout: "/admin"
+  },
+  {
+    path: "/advanced/upload-bussing-report",
+    name: "Upload Bussing Report",
+    icon: "ni ni-cloud-upload-96",
+    component: UploadBussingInfo,
     layout: "/admin"
   }
 ];

@@ -8,6 +8,7 @@ import {
     Label,
     Input
   } from "reactstrap";
+  import { Link } from "react-router-dom";
   import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react'
 import axios from 'axios';
 import moment from 'moment';
@@ -16,7 +17,6 @@ import {BASE_URL} from "../../config/baseUrl";
 
 export default function StudentBussingInfo(){
     const [studentBussing, setStudentBussing] = useState([]);
-    
     const [hideFilterOptions, setHideFilterOptions] = useState(false);
     const [bussingDate, setBussingDate] = useState("");
     
@@ -25,10 +25,18 @@ export default function StudentBussingInfo(){
         const response = await axios.get(`${BASE_URL}/react_admin/town_bussing_aggregate?date=${date}`);        
         await setStudentBussing(response.data);
     }
+
+    
+
     useEffect(() => {
         let defaultDate = moment().startOf('week');
         setBussingDate(moment(defaultDate).format("YYYY-MM-DD"));
         getStudentBussingInfo(moment(defaultDate).format("YYYY-MM-DD"));
+
+        return () => {
+
+        }
+
     },[]);
 
     const handleDateChange = (obj) => {
@@ -36,6 +44,12 @@ export default function StudentBussingInfo(){
         console.log(selectedDate)
         setBussingDate(selectedDate);
         getStudentBussingInfo(selectedDate);
+    }
+
+    const handleConstituencyClick = (e, x) => {
+        //go to the constituency page
+        console.log(x);
+
     }
 
     return (
@@ -84,7 +98,7 @@ export default function StudentBussingInfo(){
                                 }
                             }
                         >    
-                            <input type="text" className="form-control col-4" value={bussingDate}/>
+                            <input type="text" className="form-control col-4" value={bussingDate} readOnly/>
                         </DateRangePicker>
                     </div>
                     <div className="col text-right">
@@ -103,12 +117,12 @@ export default function StudentBussingInfo(){
             <Table celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Constituency</Table.HeaderCell>
-                        <Table.HeaderCell>Con Rep</Table.HeaderCell>
-                        <Table.HeaderCell>Total Number Bussed</Table.HeaderCell>
-                        <Table.HeaderCell>Total Students Present</Table.HeaderCell>
-                        <Table.HeaderCell>Total Students that Bussed</Table.HeaderCell>
-                        <Table.HeaderCell>Total Students that Didn't Bussed</Table.HeaderCell>
+                        <Table.HeaderCell><h3>Constituency</h3></Table.HeaderCell>
+                        <Table.HeaderCell><h3>Con Rep</h3></Table.HeaderCell>
+                        <Table.HeaderCell><h3>Total Number Bussed</h3></Table.HeaderCell>
+                        <Table.HeaderCell><h3>Students Present</h3></Table.HeaderCell>
+                        <Table.HeaderCell><h3>Students that Bussed</h3></Table.HeaderCell>
+                        <Table.HeaderCell><h3>Students that Didn't Bus</h3></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -116,8 +130,18 @@ export default function StudentBussingInfo(){
                     {
                         studentBussing.map((item, key) => (
                             <Table.Row key={key}>
-                                <Table.Cell>
-                                    <SmLabel>{item.region_name}</SmLabel>
+                                <Table.Cell >
+                                    <Link
+                                        to={`/admin/constituency/${item.region_id}`}
+                                        >
+                                        <SmLabel 
+                                            content={item}
+                                            style={{cursor:'pointer'}}
+                                            onClick={handleConstituencyClick}
+                                        >
+                                            {item.region_name}
+                                        </SmLabel>
+                                    </Link>
                                 </Table.Cell>
                                 <Table.Cell>{item.con_rep}</Table.Cell>
                                 <Table.Cell>{item.bussingStats.totalNumberBussed}</Table.Cell>

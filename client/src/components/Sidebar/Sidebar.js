@@ -256,18 +256,34 @@ class Sidebar extends React.Component {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/colors?ref=adr-admin-sidebar">
-                  <i className="ni ni-palette" />
-                  Foundation
+                <NavLink 
+                tag={NavLinkRRD}
+                onClick={this.closeCollapse}
+                activeClassName="active"
+                to={"/admin/advanced/upload-bussing-report"}>
+                  <i className="ni ni-cloud-upload-96" />
+                  Upload Bussing Info with Excel
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/alerts?ref=adr-admin-sidebar">
-                  <i className="ni ni-ui-04" />
-                  Components
-                </NavLink>
-              </NavItem>
-            </Nav>
+              </Nav>
+               {/* Divider */}
+              <hr className="my-3" />
+              {/* Heading */}
+              <h6 className="navbar-heading text-muted">Reports</h6>
+              {/* Navigation */}
+              <Nav className="mb-md-3" navbar>
+                <NavItem>
+                  <NavLink 
+                  tag={NavLinkRRD}
+                  onClick={this.closeCollapse}
+                  activeClassName="active"
+                  to={"/admin/advanced/upload-students"}>
+                    <i className="ni ni-cloud-upload-96" />
+                    Generate Ministry Skills Report
+                  </NavLink>
+                </NavItem>
+              </Nav>
+            
             <Nav className="mb-md-3" navbar>
               <NavItem className="active-pro active">
                 <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adr-admin-sidebar">
