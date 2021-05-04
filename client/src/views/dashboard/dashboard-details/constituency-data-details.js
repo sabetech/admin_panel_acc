@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Header_Plain from 'components/Headers/Header_plain';
 import {
     Container,
@@ -13,9 +13,27 @@ import {
   import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react';
   import DateRangePicker from 'react-bootstrap-daterangepicker';
   import moment from 'moment';
+  import axios from 'axios';
+  import { useLocation } from "react-router-dom";
+  import {BASE_URL} from "../../../config/baseUrl";
 
 
 export default function ConstituencyDetail(){
+
+    let location = useLocation();
+    useEffect(() => {
+        //get the chart values for a particular constituency
+        loadConstituencyDetail(location.pathname);
+
+    },[]);
+
+    const loadConstituencyDetail = (pathname) => {
+        return axios.get(`${BASE_URL}/react_admin${pathname}`)
+          .then((response) => 
+          {
+            console.log(response.data);
+          });
+    }
     
     return (
         <>

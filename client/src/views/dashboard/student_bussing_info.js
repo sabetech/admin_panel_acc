@@ -8,7 +8,7 @@ import {
     Label,
     Input
   } from "reactstrap";
-  import { Link } from "react-router-dom";
+  import { Link, useLocation } from "react-router-dom";
   import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react'
 import axios from 'axios';
 import moment from 'moment';
@@ -19,14 +19,13 @@ export default function StudentBussingInfo(){
     const [studentBussing, setStudentBussing] = useState([]);
     const [hideFilterOptions, setHideFilterOptions] = useState(false);
     const [bussingDate, setBussingDate] = useState("");
+
     
 
     const getStudentBussingInfo = async (date) => {
         const response = await axios.get(`${BASE_URL}/react_admin/town_bussing_aggregate?date=${date}`);        
         await setStudentBussing(response.data);
     }
-
-    
 
     useEffect(() => {
         let defaultDate = moment().startOf('week');

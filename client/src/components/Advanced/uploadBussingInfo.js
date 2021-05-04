@@ -181,15 +181,6 @@ export default function UploadBussingInfo(){
                           Upload
                           </Button>
                       </label>
-                      <input accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" 
-                          className={classes.input} id="icon-button-file" type="file"
-                          onChange={selectFile} 
-                          />
-                      <label htmlFor="icon-button-file">
-                          <IconButton color="primary" aria-label="upload excel file" component="span">
-                              <CloudUploadIcon />
-                          </IconButton>
-                      </label>
                     </Col>
                 </Row>
               </>
