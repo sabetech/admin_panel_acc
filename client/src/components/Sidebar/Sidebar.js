@@ -277,7 +277,7 @@ class Sidebar extends React.Component {
                   tag={NavLinkRRD}
                   onClick={this.closeCollapse}
                   activeClassName="active"
-                  to={"/admin/advanced/upload-students"}>
+                  to={"/admin/students/ministry-skills"}>
                     <i className="ni ni-cloud-upload-96" />
                     Generate Ministry Skills Report
                   </NavLink>

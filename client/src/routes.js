@@ -29,6 +29,7 @@ import ConstituencyDetail from "views/dashboard/dashboard-details/constituency-d
 import UploadBussingInfo from "components/Advanced/uploadBussingInfo";
 
 import UploadStudents from "components/Advanced/uploadStudentsFromExcel";
+import MinistrySkills from "views/students/ministry_skills";
 
 var routes = [
   {
@@ -118,6 +119,13 @@ export var app_routes = [
     name: "Upload Bussing Report",
     icon: "ni ni-cloud-upload-96",
     component: UploadBussingInfo,
+    layout: "/admin"
+  },
+  {
+    path: "/students/ministry-skills",
+    name: "Ministry Skills",
+    icon: "ni ni-tv-2 text-primary",
+    component: MinistrySkills,
     layout: "/admin"
   }
 ];
