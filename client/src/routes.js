@@ -31,6 +31,8 @@ import UploadBussingInfo from "components/Advanced/uploadBussingInfo";
 import UploadStudents from "components/Advanced/uploadStudentsFromExcel";
 import MinistrySkills from "views/students/ministry_skills";
 
+import Constituencies from "components/Constituencies/constituencies";
+
 var routes = [
   {
     path: "/index",
@@ -126,6 +128,13 @@ export var app_routes = [
     name: "Ministry Skills",
     icon: "ni ni-tv-2 text-primary",
     component: MinistrySkills,
+    layout: "/admin"
+  },
+  {
+    path: "/con_reps",
+    name: "Constituencies",
+    icon: "ni ni-tv-2 text-primary",
+    component: Constituencies,
     layout: "/admin"
   }
 ];

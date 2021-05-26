@@ -40,7 +40,7 @@ export default function StudentBussingInfo(){
 
     const handleDateChange = (obj) => {
         let selectedDate = moment(obj.startDate).format("YYYY-MM-DD");
-        console.log(selectedDate)
+        
         setBussingDate(selectedDate);
         getStudentBussingInfo(selectedDate);
     }
@@ -131,7 +131,7 @@ export default function StudentBussingInfo(){
                             <Table.Row key={key}>
                                 <Table.Cell >
                                     <Link
-                                        to={`/admin/constituency/${item.region_id}`}
+                                        to={`/admin/constituency/${item.region_id}?date=${bussingDate}`}
                                         >
                                         <SmLabel 
                                             content={item}
