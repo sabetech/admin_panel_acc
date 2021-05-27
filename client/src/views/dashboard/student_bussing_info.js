@@ -116,12 +116,13 @@ export default function StudentBussingInfo(){
             <Table celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell><h3>Constituency</h3></Table.HeaderCell>
-                        <Table.HeaderCell><h3>Con Rep</h3></Table.HeaderCell>
-                        <Table.HeaderCell><h3>Total Number Bussed</h3></Table.HeaderCell>
-                        <Table.HeaderCell><h3>Students Present</h3></Table.HeaderCell>
-                        <Table.HeaderCell><h3>Students that Bussed</h3></Table.HeaderCell>
-                        <Table.HeaderCell><h3>Students that Didn't Bus</h3></Table.HeaderCell>
+                        <Table.HeaderCell><h4>Constituency</h4></Table.HeaderCell>
+                        <Table.HeaderCell><h4>Con Rep</h4></Table.HeaderCell>
+                        <Table.HeaderCell><h4>Town Souls Bussed</h4></Table.HeaderCell>
+                        <Table.HeaderCell><h4>Students Present</h4></Table.HeaderCell>
+                        <Table.HeaderCell><h4>Total Number Bussed</h4></Table.HeaderCell>
+                        <Table.HeaderCell><h4>Students that Bussed</h4></Table.HeaderCell>
+                        <Table.HeaderCell><h4>Students that Didn't Bus</h4></Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -134,7 +135,6 @@ export default function StudentBussingInfo(){
                                         to={`/admin/constituency/${item.region_id}?date=${bussingDate}`}
                                         >
                                         <SmLabel 
-                                            content={item}
                                             style={{cursor:'pointer'}}
                                             onClick={handleConstituencyClick}
                                         >
@@ -145,6 +145,7 @@ export default function StudentBussingInfo(){
                                 <Table.Cell>{item.con_rep}</Table.Cell>
                                 <Table.Cell>{item.bussingStats.totalNumberBussed}</Table.Cell>
                                 <Table.Cell>{item.bussingStats.totalStudentsPresent}</Table.Cell>
+                                <Table.Cell>{(item.bussingStats.totalStudentsPresent + item.bussingStats.totalNumberBussed)}</Table.Cell>
                                 <Table.Cell>{item.bussingStats.totalStudentsThatBussed}</Table.Cell>
                                 <Table.Cell>{item.bussingStats.totalStudentsThatDidntBus}</Table.Cell>
                             </Table.Row>
@@ -154,8 +155,43 @@ export default function StudentBussingInfo(){
                 </Table.Body>
                 <Table.Footer>
                     <Table.Row>
-                        <Table.HeaderCell colSpan='5'>
-                            {/* put totals here */}
+                        <Table.HeaderCell colSpan='2'>
+                            <h4>{"FLC Anagkazo Grand Totals"}</h4>
+                        </Table.HeaderCell>
+                        <Table.HeaderCell >
+                            {
+                            studentBussing.reduce((prev, currentVal) => 
+                               prev + currentVal.bussingStats.totalNumberBussed
+                            ,0)
+                            }
+                        </Table.HeaderCell>
+                        <Table.HeaderCell >
+                            {
+                            studentBussing.reduce((prev, currentVal) => 
+                               prev + currentVal.bussingStats.totalStudentsPresent
+                            ,0)
+                            }
+                        </Table.HeaderCell>
+                        <Table.HeaderCell >
+                            {
+                            studentBussing.reduce((prev, currentVal) => 
+                               prev + (currentVal.bussingStats.totalStudentsPresent + currentVal.bussingStats.totalNumberBussed)
+                            ,0)
+                            }
+                        </Table.HeaderCell>
+                        <Table.HeaderCell >
+                            {
+                            studentBussing.reduce((prev, currentVal) => 
+                               prev + currentVal.bussingStats.totalStudentsThatBussed
+                            ,0)
+                            }
+                        </Table.HeaderCell>
+                        <Table.HeaderCell >
+                            {
+                            studentBussing.reduce((prev, currentVal) => 
+                               prev + currentVal.bussingStats.totalStudentsThatDidntBus
+                            ,0)
+                            }
                         </Table.HeaderCell>
                     </Table.Row>
                 </Table.Footer>
