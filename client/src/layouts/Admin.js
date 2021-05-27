@@ -80,7 +80,7 @@ class Admin extends React.Component {
     }
 
 
-    return "Brand";
+    return "";
   };
   render() {
     return (

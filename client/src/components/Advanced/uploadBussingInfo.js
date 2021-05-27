@@ -70,11 +70,15 @@ export default function UploadBussingInfo(){
 
       if (typeof value[1] === 'undefined') return;
 
+      if (typeof value[2] === 'undefined') value[2] = 0;
+      if (typeof value[3] === 'undefined') value[3] = 0;
+
       bussingDataInfo.push({
         id: count,
-        index_number: value[1].substring(0, value[1].indexOf(" ")).trim(),
-        st_attn: value[2],
-        twn_attn: value[3]
+        //index_number: value[1].substring(0, value[1].indexOf(" ")).trim(),
+        index_number: value[1].toString().trim(),
+        st_attn: (value[2] === "") ? 0 : value[2],
+        twn_attn: (value[3] === "") ? 0 : value[3]
       });
     });
 

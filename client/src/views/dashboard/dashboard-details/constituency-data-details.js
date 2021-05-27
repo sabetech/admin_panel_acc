@@ -13,9 +13,12 @@ import {
   import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react';
   import DateRangePicker from 'react-bootstrap-daterangepicker';
   import moment from 'moment';
+  import Typography from '@material-ui/core/Typography';
+  import Link from '@material-ui/core/Link';
   import axios from 'axios';
   import { useLocation } from "react-router-dom";
   import {BASE_URL} from "../../../config/baseUrl";
+  import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
 
 export default function ConstituencyDetail(){
@@ -57,10 +60,22 @@ export default function ConstituencyDetail(){
             setBussingInfo(response.data.bussingInfo);
           });
     }
+
+    const  handleClick = (event) => {
+        event.preventDefault();
+        console.info('You clicked a breadcrumb.');
+    }
     
     return (
         <>
-            <Header_Plain title={"Constituency Rep: "+regionInfo?.region_head || "Loading ..."}/>
+           
+            <Header_Plain title={"Constituency Rep: "+ regionInfo?.region_head || "Loading ..."}/>
+            <Breadcrumbs aria-label="breadcrumb">
+                <Link color="inherit" href="/" onClick={handleClick}>
+                    Dashboard
+                </Link>
+                <Typography color="textPrimary">Constituency Bussing Details</Typography>
+            </Breadcrumbs>
             <div style={{ width: '100%' }}>
                 <Card className="shadow">
                     <CardHeader className=" bg-transparent">
@@ -71,14 +86,27 @@ export default function ConstituencyDetail(){
                                 datasets: [
                                 {
                                     type: 'bar',
-                                    label: 'Town Bussing Average',
+                                    label: 'Town Bussing',
                                     borderColor: 'rgb(54, 162, 235)',
                                     backgroundColor: 'rgb(255, 99, 132)',
                                     borderWidth: 1,
                                     data: chartValues,
                                 }]
                             }}
-                            options={{maintainAspectRatio:true}}
+                            options={
+                                {
+                                    maintainAspectRatio:true,
+                                    options: {
+                                        plugins: {
+                                            legend: {
+                                                display: true,
+                                                labels: {
+                                                    color: 'rgb(255, 99, 132)'
+                                                }
+                                            }
+                                        }
+                                    }}
+                            }
                             />
                         <Row className="mt-5">
                             <Col className="mb-5 mb-xl-0" >
@@ -116,8 +144,7 @@ export default function ConstituencyDetail(){
 
                                     <Table.Body>
                                         {
-                                            Object.keys(bussingInfo).map((item, index) => {
-                                                console.log(bussingInfo[item])
+                                            Object.keys(bussingInfo).sort().map((item, index) => {
                                                 return (bussingInfo[item].map((itm, indx) => {
                                                     return (<Table.Row key={indx}>
                                                         <Table.Cell >
@@ -130,7 +157,6 @@ export default function ConstituencyDetail(){
                                                 }))
                                             })
                                         }
-                                        
                                     </Table.Body>
                                 </Table>
                             </Col>
@@ -140,10 +166,6 @@ export default function ConstituencyDetail(){
                     </CardHeader>
                 </Card>
             </div>
-            
-
-            
-            
         </>
     )
 
