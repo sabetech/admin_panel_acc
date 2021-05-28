@@ -42,6 +42,7 @@ export default function Student_Profile_Detail({student_id}){
         return axios.get(`${BASE_URL}/react_admin${location.pathname}`)
           .then((response) => 
           {
+            console.log(response.data);
             setStudentProfileInformation(response.data);
           });
     }
@@ -363,7 +364,7 @@ export default function Student_Profile_Detail({student_id}){
                 </Row>
                 <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                   <div className="d-flex justify-content-between">
-                    <Button
+                    {/* <Button
                       className="mr-4"
                       color="info"
                       href="#pablo"
@@ -371,8 +372,8 @@ export default function Student_Profile_Detail({student_id}){
                       size="sm"
                     >
                       Connect
-                    </Button>
-                    <Button
+                    </Button> */}
+                    {/* <Button
                       className="float-right"
                       color="default"
                       href="#pablo"
@@ -380,7 +381,7 @@ export default function Student_Profile_Detail({student_id}){
                       size="sm"
                     >
                       Message
-                    </Button>
+                    </Button> */}
                   </div>
                 </CardHeader>
                 <CardBody className="pt-0 pt-md-4">
@@ -392,7 +393,7 @@ export default function Student_Profile_Detail({student_id}){
                           <span className="description">Members</span>
                         </div>
                         <div>
-                          <span className="heading">10</span>
+                          <span className="heading">0</span>
                           <span className="description">Points</span>
                         </div>
                         <div>
@@ -418,18 +419,18 @@ export default function Student_Profile_Detail({student_id}){
                     <div>
                       <i className="ni education_hat mr-2" />
                       {
-                        studentProfileInformation.student_profile?.student_roles?.map((item) => {
+                        studentProfileInformation.student_profile?.student_roles?.map((item, index) => {
                           return (
-                            <Badge color="success" pill>
+                            <Badge color="success" pill key={index}>
                               {item.pastoral_role.role}
                             </Badge>
                             )
                         })
                       }
-                      
-                      {/* <Badge color="info" pill>
-                        Basonta Leader
-                      </Badge> */}
+                      <br />
+                      <Badge color="info" pill>
+                        {studentProfileInformation.student_profile?.center?.center_name}
+                      </Badge>
                     </div>
                     <hr className="my-4" />
                     <p>
