@@ -10,6 +10,7 @@ import {
     Input
   } from "reactstrap";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import {BASE_URL} from "../../config/baseUrl";
 
 export default function TopBussingStudent(){
@@ -18,7 +19,6 @@ export default function TopBussingStudent(){
 
     const getTopBussers = async () => {
         const response = await axios.get(`${BASE_URL}/react_admin/top_bussers`);
-        await console.log(response);
         await setTopBussers(response.data);
     }
 
@@ -54,7 +54,6 @@ export default function TopBussingStudent(){
                                 </Input>
                             </FormGroup>
                         </div>
-                    
                     }
                     <div className="col text-right">
                         <Button
@@ -83,7 +82,13 @@ export default function TopBussingStudent(){
                         topBussers.map((busser, index) => (
                             <tr key={index}>
                                 <th scope="row">{busser.index_number}</th>
-                                <td>{busser.student_name}</td>
+                                <td>
+                                <Link 
+                                    to={`/admin/student/${busser.student_id}/profile`}
+                                >
+                                    {busser.student_name}
+                                </Link>    
+                                </td>
                                 <td>{busser.class}</td>
                                 <td>
                                     {busser.sum_number_bussed}
@@ -91,7 +96,6 @@ export default function TopBussingStudent(){
                             </tr>
                         ))
                     }
-                
                 </tbody>
             </Table>
         </Card>

@@ -15,6 +15,7 @@ import {
   import moment from 'moment';
   import Typography from '@material-ui/core/Typography';
   import Link from '@material-ui/core/Link';
+  import { Link as Url_link } from "react-router-dom";
   import axios from 'axios';
   import { useLocation } from "react-router-dom";
   import {BASE_URL} from "../../../config/baseUrl";
@@ -42,7 +43,7 @@ export default function ConstituencyDetail(){
         setChartLabels(Object.keys(bussingInfo));
         
         const bussingVals = Object.keys(bussingInfo).map((item) => {
-            return bussingInfo[item].reduce((accm, curVal) => {
+            return bussingInfo[item].students.reduce((accm, curVal) => {
                 return accm + (curVal?.bussingInfo?.number_bussed || 0)
             },0) ;
         });
@@ -95,17 +96,28 @@ export default function ConstituencyDetail(){
                             }}
                             options={
                                 {
+                                    scales: {
+                                        yAxes: [
+                                        {
+                                            ticks: {
+                                              beginAtZero: true,
+                                            },
+                                          },
+                                        ],
+                                    },
                                     maintainAspectRatio:true,
-                                    options: {
-                                        plugins: {
-                                            legend: {
-                                                display: true,
-                                                labels: {
-                                                    color: 'rgb(255, 99, 132)'
-                                                }
-                                            }
+                                    tooltips: {
+                                        callbacks: {
+                                            footer: (tooltipItems) => {
+                                                let centerLeader;
+                                                tooltipItems.forEach(function(tooltipItem) {
+                                                    centerLeader = bussingInfo[tooltipItem.label].students.find(item => item.id === bussingInfo[tooltipItem.label].centerLeader.student_id);
+                                                });
+                                                return 'Center Leader: '+ (centerLeader?.name || "Unknown");
+                                            },
                                         }
-                                    }}
+                                    }
+                                }
                             }
                             />
                         <Row className="mt-5">
@@ -145,12 +157,18 @@ export default function ConstituencyDetail(){
                                     <Table.Body>
                                         {
                                             Object.keys(bussingInfo).sort().map((item, index) => {
-                                                return (bussingInfo[item].map((itm, indx) => {
+                                                return (bussingInfo[item].students.map((itm, indx) => {
                                                     return (<Table.Row key={indx}>
                                                         <Table.Cell >
                                                             {itm.center.center_name}
                                                         </Table.Cell>
-                                                        <Table.Cell>{itm.name}</Table.Cell>
+                                                        
+                                                        <Table.Cell>
+                                                        <Url_link 
+                                                            to={`/admin/student/${itm.id}/profile`}
+                                                        >{itm.name}
+                                                        </Url_link>
+                                                        </Table.Cell>
                                                         <Table.Cell>{itm?.bussingInfo?.number_bussed}</Table.Cell>
                                                         <Table.Cell error={!itm?.bussingInfo?.present}>{itm?.bussingInfo?.present == 1 ? "Present" : "Absent"}</Table.Cell>
                                                     </Table.Row>)

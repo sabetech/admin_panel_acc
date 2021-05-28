@@ -7,6 +7,7 @@ import {
     Button
   } from "reactstrap";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import {BASE_URL} from '../../config/baseUrl';
 
 export default function PrayerTopStudents(){
@@ -56,7 +57,13 @@ export default function PrayerTopStudents(){
                   topPrayingstudents.map((item, index) => (
                     <tr key={index}>
                         <td scope="row">{item.index_number}</td>
-                        <td>{ item.name }</td>
+                        <td>
+                          <Link 
+                              to={`/admin/student/${item.id}/profile`}
+                          >
+                              { item.name }
+                          </Link>
+                        </td>
                         <td>
                             <div className="d-flex align-items-center">
                                 <span className="mr-2">{item.prayer_hours} hours</span>

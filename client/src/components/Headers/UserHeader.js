@@ -40,17 +40,18 @@ function UserHeader ({student_name, photo_url}) {
           <Container className="d-flex align-items-center" fluid>
             <Row>
               <Col lg="7" md="10">
+                {/* <Button
+                    color="info"
+                    href="#pablo"
+                    onClick={e => e.preventDefault()}
+                  >
+                  Back
+                </Button> */}
                 <h1 className="display-2 text-white">{ student_name }</h1>
                 <p className="text-white mt-0 mb-5">
                   This page has information about the student and his/her progress in ministerial skills
                 </p>
-                <Button
-                  color="info"
-                  href="#pablo"
-                  onClick={e => e.preventDefault()}
-                >
-                  To Be Determined
-                </Button>
+                
               </Col>
             </Row>
           </Container>
