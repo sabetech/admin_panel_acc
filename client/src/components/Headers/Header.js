@@ -83,7 +83,7 @@ class Header extends React.Component {
             <div className="header-body">
               {/* Card stats */}
               <Row>
-                <Col lg="6" xl="3">
+                <Col lg="4" xl="2">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                     <Link to={"/admin/students"}>
@@ -109,7 +109,7 @@ class Header extends React.Component {
                     </CardBody>
                   </Card>
                 </Col>
-                <Col lg="6" xl="3">
+                <Col lg="4" xl="2">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                       <Link to={"/admin/con_reps"}>
@@ -119,7 +119,7 @@ class Header extends React.Component {
                               tag="h5"
                               className="text-uppercase text-muted mb-0"
                             >
-                              Consituency Reps
+                              Constit. Reps
                             </CardTitle>
                             <span className="h2 font-weight-bold mb-0">
                               {this.state.gsos}
@@ -135,7 +135,7 @@ class Header extends React.Component {
                     </CardBody>
                   </Card>
                 </Col>
-                <Col lg="6" xl="3">
+                <Col lg="4" xl="2">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                         <Link to={"/admin/students?params=true&filter_option=role&filter_value=5"}>
@@ -159,7 +159,7 @@ class Header extends React.Component {
                     </CardBody>
                   </Card>
                 </Col>
-                <Col lg="6" xl="3">
+                <Col lg="4" xl="2">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
                     <Link to={"/admin/students?params=true&filter_option=role&filter_value=6"} >
@@ -178,6 +178,32 @@ class Header extends React.Component {
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-info text-white rounded-circle shadow">
                             <i className="fa fa-fire" />
+                          </div>
+                        </Col>
+                      </Row>
+                      </Link>
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col lg="4" xl="2">
+                  <Card className="card-stats mb-4 mb-xl-0">
+                    <CardBody>
+                    <Link to={"/admin/students?params=true&filter_option=role&filter_value=6"} >
+                      <Row>
+                        <div className="col">
+                          <CardTitle
+                            tag="h5"
+                            className="text-uppercase text-muted mb-0"
+                          >
+                            Bacenta Leaders
+                          </CardTitle>
+                          <span className="h2 font-weight-bold mb-0">
+                            { this.state.studentsCount - this.state.sontaLeaderCount }
+                          </span>
+                        </div>
+                        <Col className="col-auto">
+                          <div className="icon icon-shape bg-success text-white rounded-circle shadow">
+                            <i className="fa fa-bus" />
                           </div>
                         </Col>
                       </Row>

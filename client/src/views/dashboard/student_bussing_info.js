@@ -156,7 +156,15 @@ export default function StudentBussingInfo(){
                 <Table.Footer>
                     <Table.Row>
                         <Table.HeaderCell colSpan='2'>
+                        <Link
+                            to={`/admin/all_constituency_monthly_charts`}
+                        >
+                            <SmLabel 
+                                style={{cursor:'pointer'}}                
+                            >
                             <h4>{"FLC Anagkazo Grand Totals"}</h4>
+                            </SmLabel>
+                        </Link>
                         </Table.HeaderCell>
                         <Table.HeaderCell >
                             {

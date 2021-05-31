@@ -56,7 +56,6 @@ export default function ConstituencyDetail(){
         return axios.get(`${BASE_URL}/react_admin${pathname}`)
           .then((response) => 
           {
-            console.log(response.data);
             setRegionInfo(response.data.region);
             setBussingInfo(response.data.bussingInfo);
           });

@@ -21,8 +21,8 @@ export default function MinistrySkills(){
         { field: 'student_name', headerName: 'Name', width: 130 },
         { 
             field: 'Prayer', 
-            headerName: 'Prayer Point', width: 130,
-            valueGetter: (params) =>`${params.row.prayerPoint.prayerPoint}`
+            headerName: 'Prayer Point', width: 100,
+            valueGetter: (params) => `${params.row.prayerPoint.prayerPoint}`
         },
         { 
             field: 'sheepSeeking', 
@@ -41,17 +41,17 @@ export default function MinistrySkills(){
         },
         { 
             field: 'basonta', 
-            headerName: 'Basonta', width: 130,
+            headerName: 'Basonta', width: 100,
             valueGetter: (params) =>`${params.row.basonta.basontaPoint}`
         },
         { 
             field: 'SAT', 
-            headerName: 'SAT', width: 130,
+            headerName: 'SAT', width: 80,
             valueGetter: (params) =>`${params.row.sat.satMaterialsPoint}`
         },
         { 
             field: 'ucPoint', 
-            headerName: 'Understanding Campaign', width: 130,
+            headerName: 'Understanding Campaign', width: 100,
             valueGetter: (params) =>`${params.row.ucPoint.ucPassPoint}`
         },
         { 
@@ -59,6 +59,31 @@ export default function MinistrySkills(){
             headerName: 'Bussing', width: 130,
             valueGetter: (params) =>`${params.row.bussingPoint.bussingPoint}`
         },
+        {
+            field: 'sum_point',
+            headerName: 'Total %', width: 100,
+            valueGetter: (params) => (parseInt(params.row.bussingPoint.bussingPoint) + 
+                                     parseInt(params.row.ucPoint.ucPassPoint) + 
+                                     parseInt(params.row.sat.satMaterialsPoint) + 
+                                     parseInt(params.row.basonta.basontaPoint) + 
+                                     parseInt(params.row.multiplication.outreachPoint) + 
+                                     parseInt(params.row.counselling.counselPoint) + 
+                                     parseInt(params.row.sheepSeeking.VisitPoint) + 
+                                     parseInt(params.row.prayerPoint.prayerPoint)) + "%"                      
+        },
+        {
+            field: 'total_point',
+            headerName: 'Point', width: 100,
+            valueGetter: (params) => (parseInt(params.row.bussingPoint.bussingPoint) + 
+                                    parseInt(params.row.ucPoint.ucPassPoint) + 
+                                    parseInt(params.row.sat.satMaterialsPoint) + 
+                                    parseInt(params.row.basonta.basontaPoint) + 
+                                    parseInt(params.row.multiplication.outreachPoint) + 
+                                    parseInt(params.row.counselling.counselPoint) + 
+                                    parseInt(params.row.sheepSeeking.VisitPoint) + 
+                                    parseInt(params.row.prayerPoint.prayerPoint)
+                                    ) > 80 ? 100:0
+        }
     ];
 
     let unmounted = false;

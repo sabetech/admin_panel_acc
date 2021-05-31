@@ -32,6 +32,7 @@ import UploadStudents from "components/Advanced/uploadStudentsFromExcel";
 import MinistrySkills from "views/students/ministry_skills";
 
 import Constituencies from "components/Constituencies/constituencies";
+import AllConstituencyCharts from "views/dashboard/dashboard-details/constituency_all_charts";
 
 var routes = [
   {
@@ -135,6 +136,12 @@ export var app_routes = [
     name: "Constituencies",
     icon: "ni ni-tv-2 text-primary",
     component: Constituencies,
+    layout: "/admin"
+  },{
+    path: "/all_constituency_monthly_charts",
+    name: "Constituency Monthly Bussing Chart",
+    icon: "ni ni-tv-2 text-primary",
+    component: AllConstituencyCharts,
     layout: "/admin"
   }
 ];
