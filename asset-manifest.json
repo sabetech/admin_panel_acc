@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/admin_panel_acc/static/css/main.9d17c98a.chunk.css",
-    "main.js": "/admin_panel_acc/static/js/main.4b55a1ca.chunk.js",
-    "main.js.map": "/admin_panel_acc/static/js/main.4b55a1ca.chunk.js.map",
+    "main.js": "/admin_panel_acc/static/js/main.efbd08d1.chunk.js",
+    "main.js.map": "/admin_panel_acc/static/js/main.efbd08d1.chunk.js.map",
     "runtime-main.js": "/admin_panel_acc/static/js/runtime-main.205f3737.js",
     "runtime-main.js.map": "/admin_panel_acc/static/js/runtime-main.205f3737.js.map",
     "static/css/2.26fbdfd9.chunk.css": "/admin_panel_acc/static/css/2.26fbdfd9.chunk.css",
-    "static/js/2.dbdc17cb.chunk.js": "/admin_panel_acc/static/js/2.dbdc17cb.chunk.js",
-    "static/js/2.dbdc17cb.chunk.js.map": "/admin_panel_acc/static/js/2.dbdc17cb.chunk.js.map",
+    "static/js/2.f9e21e04.chunk.js": "/admin_panel_acc/static/js/2.f9e21e04.chunk.js",
+    "static/js/2.f9e21e04.chunk.js.map": "/admin_panel_acc/static/js/2.f9e21e04.chunk.js.map",
     "index.html": "/admin_panel_acc/index.html",
-    "precache-manifest.129784138f419b68b3ac956c1685f3eb.js": "/admin_panel_acc/precache-manifest.129784138f419b68b3ac956c1685f3eb.js",
+    "precache-manifest.23cd7c9d418aec47ca3efb02b21d852f.js": "/admin_panel_acc/precache-manifest.23cd7c9d418aec47ca3efb02b21d852f.js",
     "service-worker.js": "/admin_panel_acc/service-worker.js",
     "static/css/2.26fbdfd9.chunk.css.map": "/admin_panel_acc/static/css/2.26fbdfd9.chunk.css.map",
     "static/css/main.9d17c98a.chunk.css.map": "/admin_panel_acc/static/css/main.9d17c98a.chunk.css.map",
-    "static/js/2.dbdc17cb.chunk.js.LICENSE.txt": "/admin_panel_acc/static/js/2.dbdc17cb.chunk.js.LICENSE.txt",
-    "static/js/main.4b55a1ca.chunk.js.LICENSE.txt": "/admin_panel_acc/static/js/main.4b55a1ca.chunk.js.LICENSE.txt",
+    "static/js/2.f9e21e04.chunk.js.LICENSE.txt": "/admin_panel_acc/static/js/2.f9e21e04.chunk.js.LICENSE.txt",
+    "static/js/main.efbd08d1.chunk.js.LICENSE.txt": "/admin_panel_acc/static/js/main.efbd08d1.chunk.js.LICENSE.txt",
     "static/media/anagkazo_full.png": "/admin_panel_acc/static/media/anagkazo_full.04f18079.png",
     "static/media/angular.jpg": "/admin_panel_acc/static/media/angular.368685db.jpg",
     "static/media/argon-react.png": "/admin_panel_acc/static/media/argon-react.f38ddea9.png",
@@ -36,8 +36,8 @@
   "entrypoints": [
     "static/js/runtime-main.205f3737.js",
     "static/css/2.26fbdfd9.chunk.css",
-    "static/js/2.dbdc17cb.chunk.js",
+    "static/js/2.f9e21e04.chunk.js",
     "static/css/main.9d17c98a.chunk.css",
-    "static/js/main.4b55a1ca.chunk.js"
+    "static/js/main.efbd08d1.chunk.js"
   ]
 }
