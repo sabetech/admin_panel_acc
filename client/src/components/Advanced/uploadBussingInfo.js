@@ -75,8 +75,8 @@ export default function UploadBussingInfo(){
 
       bussingDataInfo.push({
         id: count,
-        index_number: value[1].substring(0, value[1].indexOf(" ")).trim(),
-        //index_number: value[1].toString().trim(),
+        //index_number: value[1].substring(0, value[1].indexOf(" ")).trim(),
+        index_number: value[1].toString().trim(),
         st_attn: (value[2] === "") ? 0 : value[2],
         twn_attn: (value[3] === "") ? 0 : value[3]
       });

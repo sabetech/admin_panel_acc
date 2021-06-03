@@ -283,6 +283,18 @@ class Sidebar extends React.Component {
                   </NavLink>
                 </NavItem>
               </Nav>
+              <Nav className="mb-md-3" navbar>
+                <NavItem>
+                  <NavLink 
+                  tag={NavLinkRRD}
+                  onClick={this.closeCollapse}
+                  activeClassName="active"
+                  to={"/admin/students/anagkazo_live_attn"}>
+                    <i className="ni ni-cloud-upload-96" />
+                    Generate Attendance report
+                  </NavLink>
+                </NavItem>
+              </Nav>
             
             <Nav className="mb-md-3" navbar>
               <NavItem className="active-pro active">

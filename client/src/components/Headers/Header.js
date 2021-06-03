@@ -28,7 +28,8 @@ class Header extends React.Component {
     studentsCount: 0,
     gsos: 0,
     centerleaderCount: 0,
-    sontaLeaderCount: 0
+    sontaLeaderCount: 0,
+    bacenta_leader_count: 0
   };
 
   cancelTokenSource = null;
@@ -69,6 +70,15 @@ class Header extends React.Component {
       this.setState({sontaLeaderCount: response.data.sonta_leader_count});
     });
 
+    axios({
+      url: 'https://anagkazo.firstlovegallery.com/api/admin_app/bacenta_leaders_count',
+      method: 'GET',
+      cancelToken: this.cancelTokenSource.token
+    }).then((response) => {
+      console.log(response.data);
+      this.setState({bacenta_leaders_count: response.data.bacenta_leader_count.length});
+    })
+
   }
 
   componentWillUnmount(){
@@ -101,7 +111,7 @@ class Header extends React.Component {
                         </Col>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                            <i className="fas fa-chart-bar" />
+                            <i className="fas fa-graduation-cap" />
                           </div>
                         </Col>
                       </Row>
@@ -138,7 +148,7 @@ class Header extends React.Component {
                 <Col lg="4" xl="2">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
-                        <Link to={"/admin/students?params=true&filter_option=role&filter_value=5"}>
+                        <Link to={"/admin/students/center_leaders"}>
                           <Row>
                             <div className="col">
                               <CardTitle
@@ -162,7 +172,7 @@ class Header extends React.Component {
                 <Col lg="4" xl="2">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
-                    <Link to={"/admin/students?params=true&filter_option=role&filter_value=6"} >
+                    <Link to={"/admin/students/sonta_leaders"} >
                       <Row>
                         <div className="col">
                           <CardTitle
@@ -188,7 +198,7 @@ class Header extends React.Component {
                 <Col lg="4" xl="2">
                   <Card className="card-stats mb-4 mb-xl-0">
                     <CardBody>
-                    <Link to={"/admin/students?params=true&filter_option=role&filter_value=6"} >
+                    <Link to={"/admin/students/bacenta_leaders"} >
                       <Row>
                         <div className="col">
                           <CardTitle
@@ -198,12 +208,38 @@ class Header extends React.Component {
                             Bacenta Leaders
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            { this.state.studentsCount - this.state.sontaLeaderCount }
+                            { this.state.bacenta_leaders_count }
                           </span>
                         </div>
                         <Col className="col-auto">
                           <div className="icon icon-shape bg-success text-white rounded-circle shadow">
                             <i className="fa fa-bus" />
+                          </div>
+                        </Col>
+                      </Row>
+                      </Link>
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col lg="4" xl="2">
+                  <Card className="card-stats mb-4 mb-xl-0">
+                    <CardBody>
+                    <Link to={"/admin/students/church_planters"} >
+                      <Row>
+                        <div className="col">
+                          <CardTitle
+                            tag="h5"
+                            className="text-uppercase text-muted mb-0"
+                          >
+                            Church Planters
+                          </CardTitle>
+                          <span className="h2 font-weight-bold mb-0">
+                            {this.state.studentsCount - this.state.bacenta_leaders_count}
+                          </span>
+                        </div>
+                        <Col className="col-auto">
+                          <div className="icon icon-shape bg-default text-white rounded-circle shadow">
+                            <i className="fa fa-seedling" />
                           </div>
                         </Col>
                       </Row>

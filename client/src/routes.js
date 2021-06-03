@@ -33,6 +33,13 @@ import MinistrySkills from "views/students/ministry_skills";
 
 import Constituencies from "components/Constituencies/constituencies";
 import AllConstituencyCharts from "views/dashboard/dashboard-details/constituency_all_charts";
+import StudentAttn from "views/students/student_attn";
+
+import StudentCenterLeaders  from "views/students/student_center_leaders";
+import StudentSontaLeaders  from "views/students/student_sonta_leaders";
+import StudentBacentaLeaders from "views/students/student_bacenta_leaders";
+import StudentChurchPlanters from "views/students/students_church_planters";
+
 
 var routes = [
   {
@@ -96,6 +103,34 @@ export default routes;
 
 export var app_routes = [
   {
+    path: "/students/center_leaders",
+    name: "Center Leaders",
+    icon: "ni ni-tv-2 text-primary",
+    component: StudentCenterLeaders,
+    layout: "/admin"
+  },
+  {
+    path: "/students/sonta_leaders",
+    name: "Sonta Leaders",
+    icon: "ni ni-tv-2 text-primary",
+    component: StudentSontaLeaders,
+    layout: "/admin"
+  },
+  {
+    path: "/students/bacenta_leaders",
+    name: "Bacenta Leaders",
+    icon: "ni ni-tv-2 text-primary",
+    component: StudentBacentaLeaders,
+    layout: "/admin"
+  },
+  {
+    path: "/students/church_planters",
+    name: "Church Planters",
+    icon: "ni ni-tv-2 text-primary",
+    component: StudentChurchPlanters,
+    layout: "/admin"
+  },
+  {
     path: "/student/:id/profile",
     name: "Students Profile",
     icon: "ni ni-tv-2 text-primary",
@@ -108,7 +143,6 @@ export var app_routes = [
     icon: "ni ni-tv-2 text-primary",
     component: ConstituencyDetail,
     layout: '/admin'
-    
   },
   {
     path: "/advanced/upload-students",
@@ -142,6 +176,13 @@ export var app_routes = [
     name: "Constituency Monthly Bussing Chart",
     icon: "ni ni-tv-2 text-primary",
     component: AllConstituencyCharts,
+    layout: "/admin"
+  },
+  {
+    path: "/students/anagkazo_live_attn",
+    name: "Attendance",
+    icon: "ni ni-tv-2 text-primary",
+    component: StudentAttn,
     layout: "/admin"
   }
 ];

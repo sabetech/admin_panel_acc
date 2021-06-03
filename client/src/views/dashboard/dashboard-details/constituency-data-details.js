@@ -71,7 +71,7 @@ export default function ConstituencyDetail(){
            
             <Header_Plain title={"Constituency Rep: "+ regionInfo?.region_head || "Loading ..."}/>
             <Breadcrumbs aria-label="breadcrumb">
-                <Link color="inherit" href="/" onClick={handleClick}>
+                <Link color="inherit" to={'/admin/index'} href="/">
                     Dashboard
                 </Link>
                 <Typography color="textPrimary">Constituency Bussing Details</Typography>
