@@ -3,8 +3,9 @@ import UserHeader from "components/Headers/UserHeader.js";
 import {useLocation} from "react-router-dom";
 import {BASE_URL} from "../../config/baseUrl";
 import { Badge } from "reactstrap";
-import { Image, List, Placeholder, Modal } from 'semantic-ui-react';
+import { Image, List, Placeholder } from 'semantic-ui-react';
 import { Bar } from "react-chartjs-2";
+import { Reveal, Table } from 'semantic-ui-react'
 
 //import RenderStudentSummary from "profile_summaries";
 
@@ -29,7 +30,7 @@ export default function Student_Profile_Detail({student_id}){
     const [chartData, setChartData] = useState([]);
     const [chartLabels, setChartLabels] = useState([]);
     const [chartTitle, setChartTitle] = useState("");
-
+    const [chartTableVisibilty, setChartTableVisibility] = useState(false);
 
     let location = useLocation();
 
@@ -478,8 +479,7 @@ export default function Student_Profile_Detail({student_id}){
                     <Col className="text-right" xs="4">
                       <Button
                         color="primary"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        onClick={e => setChartTableVisibility(prev => !prev)}
                         size="sm"
                       >
                         Switch Chart
@@ -488,9 +488,33 @@ export default function Student_Profile_Detail({student_id}){
                   </Row>
                 </CardHeader>
                 <CardBody>
-                  <div className="chart">
-                    <RenderBarChart />
-                  </div>
+                  
+                      <Table celled >
+                        <Table.Header>
+                          <Table.Row>
+                            <Table.HeaderCell singleLine><h4>Date</h4></Table.HeaderCell>
+                            <Table.HeaderCell><h4>Value</h4></Table.HeaderCell>
+                          </Table.Row>
+                        </Table.Header>
+
+                      <Table.Body>
+                        {
+                          chartData.map((item, index) => 
+                              <Table.Row>
+                                <Table.Cell>
+                                    {chartLabels[index]}
+                                </Table.Cell>
+                                <Table.Cell>
+                                    {item}
+                                </Table.Cell>
+                              </Table.Row>
+                          )
+                        }
+                      </Table.Body>
+                      </Table>
+                      <div className="chart">
+                        <RenderBarChart />
+                      </div>
                 </CardBody>
             </Card>
           </Col>
