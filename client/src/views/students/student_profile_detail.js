@@ -108,7 +108,7 @@ export default function Student_Profile_Detail({student_id}){
 
     const RenderPrayerSummary = ({prayer_logs}) => {
       const prayer_hours_sum = prayer_logs.reduce((prev, cur) => prev + cur.number_of_hours, 0);
-
+      
       return (
       <List.Item
         onClick = {() => {
@@ -118,8 +118,10 @@ export default function Student_Profile_Detail({student_id}){
           setChartData(prayer_logs.map((o) => o.number_of_hours));
 
           setChartLabels(
-            prayer_logs.map((o) => new Date(o.date_prayed)
-            .toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})));
+            prayer_logs.map((o) => new Date(o.date_prayed.substring(0, o.date_prayed.indexOf(" ")))
+            .toLocaleDateString('en-US', {year: 'numeric', month: 'short', day: 'numeric'})
+            )
+          );
         }}
       >
         <List.Content floated='right'>
@@ -136,6 +138,7 @@ export default function Student_Profile_Detail({student_id}){
 
     const RenderVisitationSummary = ({visitation_logs}) => {
       const visitations = visitation_logs.length;
+      
       return (
         <List.Item
           onClick = {() => {

@@ -295,6 +295,19 @@ class Sidebar extends React.Component {
                   </NavLink>
                 </NavItem>
               </Nav>
+              <Nav className="mb-md-3" navbar>
+                <NavItem>
+                  <NavLink 
+                  tag={NavLinkRRD}
+                  onClick={this.closeCollapse}
+                  activeClassName="active"
+                  to={"/admin/students/generate-bussing-report"}>
+                    <i className="ni ni-bus-front-12" />
+                    Generate Bussing Reports
+                  </NavLink>
+                </NavItem>
+              </Nav>
+
             
             <Nav className="mb-md-3" navbar>
               <NavItem className="active-pro active">

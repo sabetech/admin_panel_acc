@@ -184,5 +184,11 @@ export var app_routes = [
     icon: "ni ni-tv-2 text-primary",
     component: StudentAttn,
     layout: "/admin"
+  },
+  {
+    path: "/students/generate-bussing-report",
+    name: "General Bussing report",
+    icon: "ni ni-bus-front-12 text-primary",
+    layout: "/admin"
   }
 ];
