@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/admin_panel_acc/static/css/main.9d17c98a.chunk.css",
-    "main.js": "/admin_panel_acc/static/js/main.bff144d5.chunk.js",
-    "main.js.map": "/admin_panel_acc/static/js/main.bff144d5.chunk.js.map",
+    "main.js": "/admin_panel_acc/static/js/main.d19a7ff7.chunk.js",
+    "main.js.map": "/admin_panel_acc/static/js/main.d19a7ff7.chunk.js.map",
     "runtime-main.js": "/admin_panel_acc/static/js/runtime-main.205f3737.js",
     "runtime-main.js.map": "/admin_panel_acc/static/js/runtime-main.205f3737.js.map",
     "static/css/2.26fbdfd9.chunk.css": "/admin_panel_acc/static/css/2.26fbdfd9.chunk.css",
     "static/js/2.b41a9f8c.chunk.js": "/admin_panel_acc/static/js/2.b41a9f8c.chunk.js",
     "static/js/2.b41a9f8c.chunk.js.map": "/admin_panel_acc/static/js/2.b41a9f8c.chunk.js.map",
     "index.html": "/admin_panel_acc/index.html",
-    "precache-manifest.98af0a07ba4bd5428a8d429e230373fb.js": "/admin_panel_acc/precache-manifest.98af0a07ba4bd5428a8d429e230373fb.js",
+    "precache-manifest.4c8d83cd440bdabc6605273ce100a021.js": "/admin_panel_acc/precache-manifest.4c8d83cd440bdabc6605273ce100a021.js",
     "service-worker.js": "/admin_panel_acc/service-worker.js",
     "static/css/2.26fbdfd9.chunk.css.map": "/admin_panel_acc/static/css/2.26fbdfd9.chunk.css.map",
     "static/css/main.9d17c98a.chunk.css.map": "/admin_panel_acc/static/css/main.9d17c98a.chunk.css.map",
     "static/js/2.b41a9f8c.chunk.js.LICENSE.txt": "/admin_panel_acc/static/js/2.b41a9f8c.chunk.js.LICENSE.txt",
-    "static/js/main.bff144d5.chunk.js.LICENSE.txt": "/admin_panel_acc/static/js/main.bff144d5.chunk.js.LICENSE.txt",
+    "static/js/main.d19a7ff7.chunk.js.LICENSE.txt": "/admin_panel_acc/static/js/main.d19a7ff7.chunk.js.LICENSE.txt",
     "static/media/anagkazo_full.png": "/admin_panel_acc/static/media/anagkazo_full.04f18079.png",
     "static/media/angular.jpg": "/admin_panel_acc/static/media/angular.368685db.jpg",
     "static/media/argon-react.png": "/admin_panel_acc/static/media/argon-react.f38ddea9.png",
@@ -38,6 +38,6 @@
     "static/css/2.26fbdfd9.chunk.css",
     "static/js/2.b41a9f8c.chunk.js",
     "static/css/main.9d17c98a.chunk.css",
-    "static/js/main.bff144d5.chunk.js"
+    "static/js/main.d19a7ff7.chunk.js"
   ]
 }
