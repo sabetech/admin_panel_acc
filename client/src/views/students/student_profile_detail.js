@@ -264,7 +264,7 @@ export default function Student_Profile_Detail({student_id}){
     }
 
     const RenderBussingSummary = ({bussing_logs}) => {
-      const bussing_average = (bussing_logs.reduce((prev, cur) => prev + cur.value, 0) / bussing_logs.length).toFixed(2);
+      const bussing_average = (bussing_logs.reduce((prev, cur) => prev + cur.value, 0) / bussing_logs.length).toFixed(0);
       return (
         <List.Item onClick = 
         {() => {
@@ -291,7 +291,7 @@ export default function Student_Profile_Detail({student_id}){
     }
 
     const RenderCenterServiceSummary = ({center_services}) => {
-      const center_service_average = (center_services.reduce((prev, cur) => prev + cur.number_of_souls, 0) / center_services.length).toFixed(2);
+      const center_service_average = (center_services.reduce((prev, cur) => prev + cur.number_of_souls, 0) / center_services.length).toFixed(0);
       return (
         <List.Item onClick={() => {
           setActiveDetail("Center Service");

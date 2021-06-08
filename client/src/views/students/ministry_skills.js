@@ -19,6 +19,7 @@ export default function MinistrySkills(){
     const columns = [
         { field: 'index_number', headerName: 'Index Number', width: 100 },
         { field: 'student_name', headerName: 'Name', width: 130 },
+        { field: 'class', headerName: 'Class', width: 130 },
         { 
             field: 'Prayer', 
             headerName: 'Prayer Point', width: 100,
