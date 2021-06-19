@@ -15,6 +15,7 @@ import axios from "axios";
 export default function BussingReport(){
     const [bussingReport, setBussingReport] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [dateBussingHeadings, setDateBussingHeadings] = useState([]);
 
     const columns = [
         { field: 'index_number', headerName: 'Index Number', width: 100 },
@@ -33,15 +34,25 @@ export default function BussingReport(){
           }    
     },[]);
 
+    // const dateBussingHeadings = () => {
+    //   return axios.get(`${BASE_URL}/react_admin/bussing-date-headings`)
+    //   .then((response) => {
+    //     if (unmounted) return;
+
+    //     //setDateBussingHeadings(response.data);
+
+    //   });
+    // }
+
     const loadBussingReport = () => {
         setLoading(true);
-        return axios.get(`${BASE_URL}/react_admin/admin/ministry_skills/report`)
+        return axios.get(`${BASE_URL}/react_admin/admin/general_bussing/report`)
                 .then((response) => 
                 {
                   if (unmounted) return;
                   setLoading(false);
                   console.log(response.data.students);
-                  setBussingReport(response.data.students);
+                  //setBussingReport(response.data.students);
       
                 });
     }
@@ -67,9 +78,7 @@ export default function BussingReport(){
                         rows={bussingReport} 
                         columns={columns} 
                         pageSize={40} 
-                        components={{
-                            Toolbar: CustomToolbar
-                        }} />
+                         />
                 </CardBody>
             </Card>
           </Container>

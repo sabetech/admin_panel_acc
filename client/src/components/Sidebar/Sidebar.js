@@ -23,17 +23,11 @@ import { PropTypes } from "prop-types";
 
 // reactstrap components
 import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
-  CardTitle,
   Collapse,
   DropdownMenu,
   DropdownItem,
   UncontrolledDropdown,
   DropdownToggle,
-  FormGroup,
   Form,
   Input,
   InputGroupAddon,
@@ -45,14 +39,10 @@ import {
   NavItem,
   NavLink,
   Nav,
-  Progress,
-  Table,
   Container,
   Row,
   Col
 } from "reactstrap";
-
-var ps;
 
 class Sidebar extends React.Component {
   state = {
@@ -251,7 +241,7 @@ class Sidebar extends React.Component {
                 onClick={this.closeCollapse}
                 activeClassName="active"
                 to={"/admin/advanced/upload-students"}>
-                  <i className="ni ni-cloud-upload-96" />
+                  <i className="fa fa-users" />
                   Upload Students with Excel
                 </NavLink>
               </NavItem>
@@ -261,7 +251,7 @@ class Sidebar extends React.Component {
                 onClick={this.closeCollapse}
                 activeClassName="active"
                 to={"/admin/advanced/upload-bussing-report"}>
-                  <i className="ni ni-cloud-upload-96" />
+                  <i className="fa fa-bus" />
                   Upload Bussing Info with Excel
                 </NavLink>
               </NavItem>

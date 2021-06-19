@@ -39,6 +39,7 @@ import StudentCenterLeaders  from "views/students/student_center_leaders";
 import StudentSontaLeaders  from "views/students/student_sonta_leaders";
 import StudentBacentaLeaders from "views/students/student_bacenta_leaders";
 import StudentChurchPlanters from "views/students/students_church_planters";
+import GeneralStudentBussing from "views/students/general_bussing_report";
 
 
 var routes = [
@@ -52,14 +53,14 @@ var routes = [
   {
     path: "/students",
     name: "Students",
-    icon: "fa fa-users text-blue",
+    icon: "fa fa-users text-success",
     component: Students,
     layout: "/admin"
   },
   {
     path: "/center_google_map",
     name: "Center Venue Location",
-    icon: "fa fa-map-marker-alt text-blue",
+    icon: "fa fa-map-marker-alt text-danger",
     component: CenterVenueMap,
     layout: "/admin"
   }
@@ -189,6 +190,7 @@ export var app_routes = [
     path: "/students/generate-bussing-report",
     name: "General Bussing report",
     icon: "ni ni-bus-front-12 text-primary",
+    component: GeneralStudentBussing,
     layout: "/admin"
   }
 ];

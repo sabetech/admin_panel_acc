@@ -28,7 +28,7 @@ export default function StudentBussingInfo(){
     }
 
     useEffect(() => {
-        let defaultDate = moment().startOf('week');
+        let defaultDate = moment().day('Saturday');
         setBussingDate(moment(defaultDate).format("YYYY-MM-DD"));
         getStudentBussingInfo(moment(defaultDate).format("YYYY-MM-DD"));
 
