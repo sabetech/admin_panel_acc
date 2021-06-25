@@ -60,6 +60,7 @@
     "google-map-react": "^2.1.9",
     "jquery": "^3.6.0",
     "materialize-css": "^1.0.0-rc.2",
+    "mdbreact": "^5.0.2",
     "moment": "^2.24.0",
     "node-sass": "4.13.1",
     "nouislider": "14.1.1",

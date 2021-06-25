@@ -2,29 +2,26 @@ import React, { useEffect, useState } from "react";
 import {
     Container, Card, CardHeader, CardBody, Spinner
   } from "reactstrap";
-import {
-    DataGrid,
-    GridToolbarContainer,
-    GridToolbarExport,
-    
-  } from '@material-ui/data-grid';
+import { MDBDataTableV5 } from 'mdbreact';
 import Header from "components/Headers/Header.js";
 import {BASE_URL} from "../../config/baseUrl";
 import axios from "axios";
 
 export default function BussingReport(){
-    const [bussingReport, setBussingReport] = useState([]);
+    const [datatable, setDatatable] = React.useState(() => 
+                                                        ({
+                                                          columns: [
+                                                            { field: 'index_number', label: 'Index Number', width: 100 },
+                                                            { field: 'student_name', label: 'Name', width: 130 },
+                                                            { field: 'class', label: 'Class', width: 130 }
+                                                          ], 
+                                                          rows: []
+                                                        })
+                                                    );
     const [loading, setLoading] = useState(false);
-    const [dateBussingHeadings, setDateBussingHeadings] = useState([]);
-
-    const columns = [
-        { field: 'index_number', headerName: 'Index Number', width: 100 },
-        { field: 'student_name', headerName: 'Name', width: 130 },
-        { field: 'class', headerName: 'Class', width: 130 }
-    ];
 
     let unmounted = false;
-    //get ministry skills json from the server
+    
     useEffect(()=>{
         
         loadBussingReport();
@@ -33,16 +30,6 @@ export default function BussingReport(){
             unmounted = true;
           }    
     },[]);
-
-    // const dateBussingHeadings = () => {
-    //   return axios.get(`${BASE_URL}/react_admin/bussing-date-headings`)
-    //   .then((response) => {
-    //     if (unmounted) return;
-
-    //     //setDateBussingHeadings(response.data);
-
-    //   });
-    // }
 
     const createData = () => {
       
@@ -55,20 +42,30 @@ export default function BussingReport(){
                 {
                   if (unmounted) return;
                   setLoading(false);
-                  console.log(response.data.students);
-                  //setDateBussingHeadings(response.data.headings);
-                  //setBussingReport(response.data.students);
+                  console.log([ 
+                  ]);
+                  setDatatable(prevState => {
+                    return {
+                      ...prevState, 
+                      columns: [...prevState.columns, ...response.data.dateHeadings.map((item) => (
+                                                                  {
+                                                                    field: item,
+                                                                    label: item,
+                                                                    width: 100
+                                                                  })) 
+                                                                  ]}
+                  });
+                  
+                  // setDatatable(prevState => {
+                  //   return {
+                  //     ...prevState, 
+                  //     rows: 
+                  //   }
+                  // })
       
                 });
     }
 
-    const CustomToolbar = () => {
-        return (
-            <GridToolbarContainer>
-              <GridToolbarExport />
-            </GridToolbarContainer>
-          );
-    }
 
     return (
         <>
@@ -79,11 +76,7 @@ export default function BussingReport(){
                     <h3 className=" mb-0">General Bussing Report - {loading && <Spinner color="success" />}</h3>
                 </CardHeader>
                 <CardBody style={{ height: 700, width: '100%' }}>
-                    <DataGrid 
-                        rows={bussingReport} 
-                        columns={columns} 
-                        pageSize={40} 
-                         />
+                <MDBDataTableV5 scrollY hover entriesOptions={[5, 20, 25]} entries={20} pagesAmount={4} data={datatable} />;
                 </CardBody>
             </Card>
           </Container>
