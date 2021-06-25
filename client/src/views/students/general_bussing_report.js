@@ -44,6 +44,10 @@ export default function BussingReport(){
     //   });
     // }
 
+    const createData = () => {
+      
+    }
+
     const loadBussingReport = () => {
         setLoading(true);
         return axios.get(`${BASE_URL}/react_admin/admin/general_bussing/report`)
@@ -52,6 +56,7 @@ export default function BussingReport(){
                   if (unmounted) return;
                   setLoading(false);
                   console.log(response.data.students);
+                  //setDateBussingHeadings(response.data.headings);
                   //setBussingReport(response.data.students);
       
                 });

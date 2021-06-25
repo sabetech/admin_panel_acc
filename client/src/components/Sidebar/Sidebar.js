@@ -77,7 +77,7 @@ class Sidebar extends React.Component {
             to={prop.layout + prop.path}
             tag={NavLinkRRD}
             onClick={this.closeCollapse}
-            activeClassName="active"
+            //activeclassName="active"
           >
             <i className={prop.icon} />
             {prop.name}
@@ -239,7 +239,7 @@ class Sidebar extends React.Component {
                 <NavLink 
                 tag={NavLinkRRD}
                 onClick={this.closeCollapse}
-                activeClassName="active"
+                //activeclassName="active"
                 to={"/admin/advanced/upload-students"}>
                   <i className="fa fa-users" />
                   Upload Students with Excel
@@ -249,7 +249,7 @@ class Sidebar extends React.Component {
                 <NavLink 
                 tag={NavLinkRRD}
                 onClick={this.closeCollapse}
-                activeClassName="active"
+                //activeclassName="active"
                 to={"/admin/advanced/upload-bussing-report"}>
                   <i className="fa fa-bus" />
                   Upload Bussing Info with Excel
@@ -266,7 +266,7 @@ class Sidebar extends React.Component {
                   <NavLink 
                   tag={NavLinkRRD}
                   onClick={this.closeCollapse}
-                  activeClassName="active"
+                  //activeclassName="active"
                   to={"/admin/students/ministry-skills"}>
                     <i className="ni ni-cloud-upload-96" />
                     Generate Ministry Skills Report
@@ -278,7 +278,7 @@ class Sidebar extends React.Component {
                   <NavLink 
                   tag={NavLinkRRD}
                   onClick={this.closeCollapse}
-                  activeClassName="active"
+                  //activeclassName="active"
                   to={"/admin/students/anagkazo_live_attn"}>
                     <i className="ni ni-cloud-upload-96" />
                     Generate Attendance report
@@ -290,13 +290,27 @@ class Sidebar extends React.Component {
                   <NavLink 
                   tag={NavLinkRRD}
                   onClick={this.closeCollapse}
-                  activeClassName="active"
+                  //activeclassName="active"
                   to={"/admin/students/generate-bussing-report"}>
                     <i className="ni ni-bus-front-12" />
                     Generate Bussing Reports
                   </NavLink>
                 </NavItem>
               </Nav>
+              <Nav className="mb-md-3" navbar>
+                <NavItem>
+                  <NavLink 
+                  rel="noopener noreferrer" 
+                  target="_blank"
+                  onClick={this.closeCollapse}
+                  //activeclassName="active"
+                  href="https://attendance.firstlovegallery.com/">
+                    <i className="ni ni-check-bold" />
+                    Redirect to Academic Attendance
+                  </NavLink>
+                </NavItem>
+              </Nav>
+
 
             
             <Nav className="mb-md-3" navbar>

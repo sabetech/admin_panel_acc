@@ -75,7 +75,6 @@ class Header extends React.Component {
       method: 'GET',
       cancelToken: this.cancelTokenSource.token
     }).then((response) => {
-      console.log(response.data);
       this.setState({bacenta_leaders_count: response.data.bacenta_leader_count.length});
     })
 
@@ -234,7 +233,7 @@ class Header extends React.Component {
                             Church Planters
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            {this.state.studentsCount - this.state.bacenta_leaders_count}
+                            {(this.state.studentsCount - this.state.bacenta_leaders_count) + ""}
                           </span>
                         </div>
                         <Col className="col-auto">

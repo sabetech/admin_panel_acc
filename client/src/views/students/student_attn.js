@@ -21,19 +21,25 @@ export default function StudentAttn(){
     const [dateString, setDateString] = useState("Select Date");
 
     const columns = [
-        { field: 'student_admission_number', headerName: 'Index Number', width: 100 },
+        { field: 'student_admission_number', headerName: 'Index Number', width: 200 },
         { 
-            field: 'student_name', headerName: 'Name', width: 130,
-        valueGetter: (params) =>`${params.row.student.name}`        
+            field: 'student_name', headerName: 'Name', width: 290,
+        valueGetter: (params) =>`${params.row.student?.name}`        
         },
+        { 
+          field: 'class', 
+          headerName: 'Class', width: 190,
+          valueGetter: (params) => `${params.row.student?.class}`
+      },
         { 
             field: 'date_time', 
-            headerName: 'Date', width: 100
+            headerName: 'Date', width: 190
         },
-        { 
-            field: 'attendance_status', 
-            headerName: 'Anagkazo Live Attendance', width: 250
-            //valueGetter: (params) =>`${params.row.attendance_status=="On Time"?"present":"absent"}`
+        {
+          field: 'created_at',
+          headerName: 'Time', 
+          width: 190,
+          valueGetter: (params) => `${params.row.created_at.split(" ")[1]}`
         }
     ]
 
