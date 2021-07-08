@@ -42,8 +42,7 @@ export default function BussingReport(){
                 {
                   if (unmounted) return;
                   setLoading(false);
-                  console.log([ 
-                  ]);
+                  
                   setDatatable(prevState => {
                     return {
                       ...prevState, 
@@ -55,14 +54,6 @@ export default function BussingReport(){
                                                                   })) 
                                                                   ]}
                   });
-                  
-                  // setDatatable(prevState => {
-                  //   return {
-                  //     ...prevState, 
-                  //     rows: 
-                  //   }
-                  // })
-      
                 });
     }
 

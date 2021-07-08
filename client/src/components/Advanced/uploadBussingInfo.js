@@ -8,8 +8,6 @@ import {
   } from "reactstrap";
 import * as XLSX from 'xlsx';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import {BASE_URL} from "config/baseUrl";
 import Snackbar from '@material-ui/core/Snackbar';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -104,8 +102,6 @@ export default function UploadBussingInfo(){
       data: formData
     });
 
-    console.log(response.data);
-    
     await renderOnGrid(response.data);
     setLoading(false);
     setOpen(true);
@@ -213,7 +209,7 @@ export default function UploadBussingInfo(){
               }}
             autoHideDuration={6000} 
             onClose={handleClose} 
-            message="Students have successfully been uploaded!"
+            message="Bussing Information has been uploaded successfully!"
           />
     </>
   )

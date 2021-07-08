@@ -43,6 +43,7 @@ import {
   Row,
   Col
 } from "reactstrap";
+import { Badge } from "reactstrap";
 
 class Sidebar extends React.Component {
   state = {
@@ -253,6 +254,17 @@ class Sidebar extends React.Component {
                 to={"/admin/advanced/upload-bussing-report"}>
                   <i className="fa fa-bus" />
                   Upload Bussing Info with Excel
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink 
+                tag={NavLinkRRD}
+                onClick={this.closeCollapse}
+                //activeclassName="active"
+                to={"/admin/advanced/upload-center-service-report"}>
+                  <i className="fa fa-users" />
+                  Upload Bacenta/Center Service with Excel
+                  <Badge color="primary">New</Badge>
                 </NavLink>
               </NavItem>
               </Nav>

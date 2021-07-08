@@ -51,6 +51,7 @@ import Bussing_V_Center_Attn from "./dashboard/bussing_v_center_attn";
 import BussingPieChart from "./dashboard/bussing_pie_chart";
 import TopBussingStudent from "./dashboard/top_bussers";
 import StudentBussingInfo from "./dashboard/student_bussing_info";
+import StudentCenterService from "./dashboard/student_center_service";
 import PieChartBussing from "./dashboard/pie_chart_bussing";
 
 import TopCenterAttnOffering from "./dashboard/top_centers";
@@ -104,6 +105,11 @@ class Index extends React.Component {
           <Row className="mt-5">
             <Col className="mb-5 mb-xl-0" >
               <StudentBussingInfo />
+            </Col>
+          </Row>
+          <Row className="mt-5">
+            <Col className="mb-5 mb-xl-0" >
+              <StudentCenterService />
             </Col>
           </Row>
           <Row className="mt-5">

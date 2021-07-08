@@ -27,6 +27,7 @@ import StudentProfile from "views/students/student_profile_detail";
 import CenterVenueMap from "views/maps/center_venue_locations";
 import ConstituencyDetail from "views/dashboard/dashboard-details/constituency-data-details";
 import UploadBussingInfo from "components/Advanced/uploadBussingInfo";
+import UploadCenterServiceInfo from "components/Advanced/uploadCenterServiceInfo";
 
 import UploadStudents from "components/Advanced/uploadStudentsFromExcel";
 import MinistrySkills from "views/students/ministry_skills";
@@ -157,6 +158,13 @@ export var app_routes = [
     name: "Upload Bussing Report",
     icon: "ni ni-cloud-upload-96",
     component: UploadBussingInfo,
+    layout: "/admin"
+  },
+  {
+    path: "/advanced/upload-center-service-report",
+    name: "Upload Bussing Report",
+    icon: "ni ni-cloud-upload-96",
+    component: UploadCenterServiceInfo,
     layout: "/admin"
   },
   {
