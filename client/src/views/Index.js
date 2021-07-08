@@ -52,15 +52,15 @@ import BussingPieChart from "./dashboard/bussing_pie_chart";
 import TopBussingStudent from "./dashboard/top_bussers";
 import StudentBussingInfo from "./dashboard/student_bussing_info";
 import StudentCenterService from "./dashboard/student_center_service";
-import PieChartBussing from "./dashboard/pie_chart_bussing";
+// import PieChartBussing from "./dashboard/pie_chart_bussing";
 
-import TopCenterAttnOffering from "./dashboard/top_centers";
+// import TopCenterAttnOffering from "./dashboard/top_centers";
 //import MapMountains from "./dashboard/map_mountains";
 //import MapAnagkazoCenters from "./dashboard/map_anagkazo_centers";
-import Map from "./dashboard/map_centers";
+// import Map from "./dashboard/map_centers";
 import PrayerTopStudents from "./dashboard/prayer_top_students";
-import places from "../assets/resources/centers_locations.json";
-import CenterList from "./dashboard/center_lists";
+// import places from "../assets/resources/centers_locations.json";
+// import CenterList from "./dashboard/center_lists";
 
 
 class Index extends React.Component {
