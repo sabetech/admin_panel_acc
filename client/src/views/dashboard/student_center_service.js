@@ -6,7 +6,8 @@ import {
     Button,
     FormGroup,
     Label,
-    Input
+    Input,
+    Spinner
   } from "reactstrap";
   import { Link, useLocation } from "react-router-dom";
   import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react'
@@ -19,10 +20,13 @@ export default function StudentCenterService(){
     const [centerServiceAtn, setCenterServiceAttn] = useState([]);
     const [hideFilterOptions, setHideFilterOptions] = useState(false);
     const [serviceDate, setServiceDate] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const getStudentCenterServiceInfo = async (date) => {
+        setLoading(true);
         const response = await axios.get(`${BASE_URL}/react_admin/center_service_aggregate?date=${date}`);        
         await setCenterServiceAttn(response.data);
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -55,6 +59,7 @@ export default function StudentCenterService(){
                 <Row className="align-items-center">
                     <div className="col-md-4">
                         <h3 className="mb-0">Constituency Center Service on<br />on {moment(serviceDate).format("DD-MMM-YYYY")}</h3>
+                        {loading && <Spinner color="primary" />}
                     </div>
                     {
                         hideFilterOptions && 
@@ -126,7 +131,7 @@ export default function StudentCenterService(){
                             <Table.Row key={key}>
                                 <Table.Cell >
                                     <Link
-                                        to={`/admin/constituency/${item.region_id}?date=${serviceDate}`}
+                                        to={`/admin/student_center_service/${item.region_id}?date=${serviceDate}`}
                                         >
                                         <SmLabel 
                                             style={{cursor:'pointer'}}

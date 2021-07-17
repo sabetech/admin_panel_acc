@@ -76,14 +76,15 @@ export default function UploadStudents(){
               id : count,
               index_number: value[getExcelCellIndex('Admission No.', dataParse[0])],
               name: value[getExcelCellIndex('First Name', dataParse[0])] +" "+value[getExcelCellIndex('Last Name', dataParse[0])],
-              date_of_birth: moment(value[getExcelCellIndex('Date of Birth', dataParse[0])]).format("YYYY-MM-DD"),
-              country: value[getExcelCellIndex('Country', dataParse[0])],
-              gender: value[getExcelCellIndex('Gender', dataParse[0])],
-              phone: value[getExcelCellIndex('Phone', dataParse[0])],
-              pastors_name: value[getExcelCellIndex('Pastors Name', dataParse[0])],
-              pastors_phone: value[getExcelCellIndex('Pastor Phone Number', dataParse[0])],
-              class: value[getExcelCellIndex('Batch', dataParse[0])]
-          })
+              date_of_birth:  getExcelCellIndex('Date of Birth', dataParse[0]) !== -1 ? moment(value[getExcelCellIndex('Date of Birth', dataParse[0])]).format("YYYY-MM-DD") : null,
+              country: getExcelCellIndex('Country', dataParse[0]) !== -1 ? value[getExcelCellIndex('Country', dataParse[0])] : null,
+              gender: getExcelCellIndex('Gender', dataParse[0]) ? value[getExcelCellIndex('Gender', dataParse[0])] : null,
+              phone: getExcelCellIndex('Mobile', dataParse[0]) !== -1 ? value[getExcelCellIndex('Mobile', dataParse[0])] : null,
+              pastors_name: getExcelCellIndex('Pastors Name', dataParse[0]) !== -1 ? value[getExcelCellIndex('Pastors Name', dataParse[0])] : null,
+              pastors_phone: getExcelCellIndex('Pastor Phone Number', dataParse[0]) !== -1 ? value[getExcelCellIndex('Pastor Phone Number', dataParse[0])] : null,
+              class: getExcelCellIndex('Batch', dataParse[0]) !== -1 ? value[getExcelCellIndex('Batch', dataParse[0])] : null,
+              email_address: getExcelCellIndex('E-mail', dataParse[0]) !== -1 ? value[getExcelCellIndex('E-mail', dataParse[0])] : null
+          });
         });
 
         uploadToServer(studentDataInfo);

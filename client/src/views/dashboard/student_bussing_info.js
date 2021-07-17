@@ -6,7 +6,8 @@ import {
     Button,
     FormGroup,
     Label,
-    Input
+    Input,
+    Spinner
   } from "reactstrap";
   import { Link, useLocation } from "react-router-dom";
   import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react'
@@ -19,12 +20,16 @@ export default function StudentBussingInfo(){
     const [studentBussing, setStudentBussing] = useState([]);
     const [hideFilterOptions, setHideFilterOptions] = useState(false);
     const [bussingDate, setBussingDate] = useState("");
+    const [loading, setLoading] = useState(false);
 
     
 
     const getStudentBussingInfo = async (date) => {
+        setLoading(true);
+
         const response = await axios.get(`${BASE_URL}/react_admin/town_bussing_aggregate?date=${date}`);        
         await setStudentBussing(response.data);
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -57,6 +62,7 @@ export default function StudentBussingInfo(){
                 <Row className="align-items-center">
                     <div className="col-md-4">
                         <h3 className="mb-0">Constituency Bussing on<br />on {moment(bussingDate).format("DD-MMM-YYYY")}</h3>
+                        {loading && <Spinner color="primary" />}
                     </div>
                     {
                         hideFilterOptions && 
@@ -100,6 +106,7 @@ export default function StudentBussingInfo(){
                             <input type="text" className="form-control col-4" value={bussingDate} readOnly/>
                         </DateRangePicker>
                     </div>
+                    
                     <div className="col text-right">
                         <Button
                         color="primary"

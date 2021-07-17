@@ -26,6 +26,7 @@ import Students from "views/students/students_all";
 import StudentProfile from "views/students/student_profile_detail";
 import CenterVenueMap from "views/maps/center_venue_locations";
 import ConstituencyDetail from "views/dashboard/dashboard-details/constituency-data-details";
+import ConstituencyCenterServiceDetail from "views/dashboard/dashboard-details/constituency_center_service";
 import UploadBussingInfo from "components/Advanced/uploadBussingInfo";
 import UploadCenterServiceInfo from "components/Advanced/uploadCenterServiceInfo";
 
@@ -35,7 +36,7 @@ import MinistrySkills from "views/students/ministry_skills";
 import Constituencies from "components/Constituencies/constituencies";
 import AllConstituencyCharts from "views/dashboard/dashboard-details/constituency_all_charts";
 import StudentAttn from "views/students/student_attn";
-
+import SSMG_home from "views/ssmg/ssmg_home";
 import StudentCenterLeaders  from "views/students/student_center_leaders";
 import StudentSontaLeaders  from "views/students/student_sonta_leaders";
 import StudentBacentaLeaders from "views/students/student_bacenta_leaders";
@@ -56,6 +57,20 @@ var routes = [
     name: "Students",
     icon: "fa fa-users text-success",
     component: Students,
+    layout: "/admin"
+  },
+  {
+    path: "/co_reps",
+    name: "COs Page",
+    icon: "fa fa-user text-info",
+    component: Constituencies,
+    layout: "/admin"
+  },
+  {
+    path: "/ssmg",
+    name: "SSMG",
+    icon: "fa fa-bolt text-primary",
+    component: SSMG_home,
     layout: "/admin"
   },
   {
@@ -144,6 +159,13 @@ export var app_routes = [
     name: "Constituency",
     icon: "ni ni-tv-2 text-primary",
     component: ConstituencyDetail,
+    layout: '/admin'
+  },
+  {
+    path: "/student_center_service/:id",
+    name: "Constituency Bacenta Services",
+    icon: "ni ni-tv-2 text-primary",
+    component: ConstituencyCenterServiceDetail,
     layout: '/admin'
   },
   {

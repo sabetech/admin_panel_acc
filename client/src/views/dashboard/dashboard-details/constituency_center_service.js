@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Header_Plain from 'components/Headers/Header_plain';
 import {
-    Container,
     Card,
     CardHeader,
     CardBody,
@@ -9,80 +8,72 @@ import {
     Col,
     Label
   } from "reactstrap";
-  import { Bar } from "react-chartjs-2";
-  import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react';
-  import DateRangePicker from 'react-bootstrap-daterangepicker';
-  import moment from 'moment';
-  import Typography from '@material-ui/core/Typography';
-  import Link from '@material-ui/core/Link';
-  import { Link as Url_link } from "react-router-dom";
-  import axios from 'axios';
-  import { useLocation } from "react-router-dom";
-  import {BASE_URL} from "../../../config/baseUrl";
-  import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import { Bar } from "react-chartjs-2";
+import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react';
+import moment from 'moment';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
+import { Link as Url_link } from "react-router-dom";
+import axios from 'axios';
+import { useLocation } from "react-router-dom";
+import {BASE_URL} from "../../../config/baseUrl"; 
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
-
-export default function ConstituencyDetail(){
-    const [bussingInfo, setBussingInfo] = useState([]);
-    const [chartLabels, setChartLabels] = useState([]);
-    const [chartValues, setChartValues] = useState([]);
-    const [regionInfo, setRegionInfo] = useState("");
-    const [bussingDate, setBussingDate] = useState("");
-    
-
+export default function ConstituencyCenterServiceDetail(){
     const location = useLocation();
     const pathName = location.pathname
     const query = location.search;
     const myParams = new URLSearchParams(query);
 
-    useEffect(() => {
-        //get the chart values for a particular constituency
-        setBussingDate(myParams.get('date'));
-
-    },[]);
-
-    useEffect(() => {
-        loadConstituencyDetail(pathName+"?date="+bussingDate);
-    }, [bussingDate]);
+    const [centerServiceInfo, setCenterServiceInfo] = useState([]);
+    const [chartLabels, setChartLabels] = useState([]);
+    const [chartValues, setChartValues] = useState([]);
+    const [regionInfo, setRegionInfo] = useState("");
+    const [centerServiceDate, setCenterServiceDate] = useState(() => {
+        return myParams.get('date');
+    });
 
     useEffect(() => {
-        setChartLabels(Object.keys(bussingInfo));
+        loadConstituencyCenterServiceDetail(pathName+"?date="+centerServiceDate);
+
+    },[centerServiceDate]);
+
+    useEffect(() => {
+        setChartLabels(Object.keys(centerServiceInfo));
         
-        const bussingVals = Object.keys(bussingInfo).map((item) => {
-            return bussingInfo[item].students.reduce((accm, curVal) => {
-                return accm + (curVal?.bussingInfo?.number_bussed || 0)
+        const centerServiceAttnValues = Object.keys(centerServiceInfo).map((item) => {
+            return centerServiceInfo[item].students.reduce((accm, curVal) => {
+                return accm + (curVal?.centerServiceInfo?.number_of_souls || 0)
             },0) ;
         });
         
-        setChartValues(bussingVals);
+        setChartValues(centerServiceAttnValues);
 
-    },[bussingInfo]);
+    },[centerServiceInfo]);
 
-    const loadConstituencyDetail = (pathname) => {
+    const loadConstituencyCenterServiceDetail = (pathname) => {
+
         return axios.get(`${BASE_URL}/react_admin${pathname}`)
           .then((response) => 
           {
+            console.log(response.data.centerServiceInfo);
             setRegionInfo(response.data.region);
-            setBussingInfo(response.data.bussingInfo);
+            setCenterServiceInfo(response.data.centerServiceInfo);
           });
     }
 
-    const  handleClick = (event) => {
-        event.preventDefault();
-        console.info('You clicked a breadcrumb.');
-    }
-    
     return (
         <>
            
-            <Header_Plain title={"Constituency Rep: "+ regionInfo?.region_head || "Loading ..."}/>
+           <Header_Plain title={"Constituency Rep: "+ regionInfo?.region_head || "Loading ..."}/>
             <Breadcrumbs aria-label="breadcrumb">
                 <Link color="inherit" to={'/admin/index'} href="/">
                     Dashboard
                 </Link>
-                <Typography color="textPrimary">Constituency Bussing Details</Typography>
+                <Typography color="textPrimary">Constituency Center Service Details</Typography>
             </Breadcrumbs>
-            <div style={{ width: '100%' }}>
+              <div style={{ width: '100%' }}>
                 <Card className="shadow">
                     <CardHeader className=" bg-transparent">
                         <CardBody style={{ width: '100%' }}>
@@ -116,7 +107,7 @@ export default function ConstituencyDetail(){
                                             footer: (tooltipItems) => {
                                                 let centerLeader;
                                                 tooltipItems.forEach(function(tooltipItem) {
-                                                    centerLeader = bussingInfo[tooltipItem.label].students.find(item => item.id === bussingInfo[tooltipItem.label].centerLeader.student_id);
+                                                    centerLeader = centerServiceInfo[tooltipItem.label].students.find(item => item.id === centerServiceInfo[tooltipItem.label].centerLeader.student_id);
                                                 });
                                                 return 'Center Leader: '+ (centerLeader?.name || "Unknown");
                                             },
@@ -141,28 +132,26 @@ export default function ConstituencyDetail(){
                                     }}
                                     onApply={
                                         (e, obj) => {
-                                            setBussingDate(obj.startDate.format("YYYY-MM-DD"));
+                                            setCenterServiceDate(obj.startDate.format("YYYY-MM-DD"));
                                         }
                                     }
                                 >    
-                                    <input type="text" className="form-control col-4" value={bussingDate} readOnly/>
+                                    <input type="text" className="form-control col-4" value={centerServiceDate} readOnly/>
                                 </DateRangePicker>
                             </div>
-
-                                <Table celled>
+                            <Table celled>
                                     <Table.Header>
                                         <Table.Row>
                                             <Table.HeaderCell>Center</Table.HeaderCell>
                                             <Table.HeaderCell>Student</Table.HeaderCell>
-                                            <Table.HeaderCell>Number Bussed</Table.HeaderCell>
-                                            <Table.HeaderCell>Present</Table.HeaderCell>
+                                            <Table.HeaderCell>Center Attendance</Table.HeaderCell>
                                         </Table.Row>
                                     </Table.Header>
 
-                                    <Table.Body>
+                                 <Table.Body>
                                         {
-                                            Object.keys(bussingInfo).sort().map((item, index) => {
-                                                return (bussingInfo[item].students.map((itm, indx) => {
+                                            Object.keys(centerServiceInfo).sort().map((item, index) => {
+                                                return (centerServiceInfo[item].students.map((itm, indx) => {
                                                     return (<Table.Row key={indx}>
                                                         <Table.Cell >
                                                             {itm.center.center_name}
@@ -174,8 +163,7 @@ export default function ConstituencyDetail(){
                                                         >{itm.name}
                                                         </Url_link>
                                                         </Table.Cell>
-                                                        <Table.Cell>{itm?.bussingInfo?.number_bussed}</Table.Cell>
-                                                        <Table.Cell error={!itm?.bussingInfo?.present}>{itm?.bussingInfo?.present == 1 ? "Present" : "Absent"}</Table.Cell>
+                                                        <Table.Cell>{itm?.centerServiceInfo?.number_of_souls}</Table.Cell>
                                                     </Table.Row>)
                                                 }))
                                             })
@@ -188,8 +176,8 @@ export default function ConstituencyDetail(){
                         </CardBody>
                     </CardHeader>
                 </Card>
-            </div>
+            </div> 
         </>
-    )
+    );
 
 }

@@ -108,14 +108,6 @@ class Sidebar extends React.Component {
         id="sidenav-main"
       >
         <Container fluid>
-          {/* Toggler */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            onClick={this.toggleCollapse}
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
           {/* Brand */}
           {logo ? (
             <NavbarBrand className="pt-0" {...navbarBrandProps} >
@@ -128,21 +120,6 @@ class Sidebar extends React.Component {
           ) : null}
           {/* User */}
           <Nav className="align-items-center d-md-none">
-            <UncontrolledDropdown nav>
-              <DropdownToggle nav className="nav-link-icon">
-                <i className="ni ni-bell-55" />
-              </DropdownToggle>
-              <DropdownMenu
-                aria-labelledby="navbar-default_dropdown_1"
-                className="dropdown-menu-arrow"
-                right
-              >
-                <DropdownItem>Action</DropdownItem>
-                <DropdownItem>Another action</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Something else here</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
             <UncontrolledDropdown nav>
               <DropdownToggle nav>
                 <Media className="align-items-center">
@@ -183,7 +160,7 @@ class Sidebar extends React.Component {
             </UncontrolledDropdown>
           </Nav>
           {/* Collapse */}
-          <Collapse navbar isOpen={this.state.collapseOpen}>
+          <Collapse navbar>
             {/* Collapse header */}
             <div className="navbar-collapse-header d-md-none">
               <Row>
@@ -200,34 +177,9 @@ class Sidebar extends React.Component {
                     )}
                   </Col>
                 ) : null}
-                <Col className="collapse-close" xs="6">
-                  <button
-                    className="navbar-toggler"
-                    type="button"
-                    onClick={this.toggleCollapse}
-                  >
-                    <span />
-                    <span />
-                  </button>
-                </Col>
               </Row>
             </div>
-            {/* Form */}
-            <Form className="mt-4 mb-3 d-md-none">
-              <InputGroup className="input-group-rounded input-group-merge">
-                <Input
-                  aria-label="Search"
-                  className="form-control-rounded form-control-prepended"
-                  placeholder="Search"
-                  type="search"
-                />
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <span className="fa fa-search" />
-                  </InputGroupText>
-                </InputGroupAddon>
-              </InputGroup>
-            </Form>
+            
             {/* Navigation */}
             <Nav navbar>{this.createLinks(routes)}</Nav>
             {/* Divider */}
@@ -239,7 +191,6 @@ class Sidebar extends React.Component {
               <NavItem>
                 <NavLink 
                 tag={NavLinkRRD}
-                onClick={this.closeCollapse}
                 //activeclassName="active"
                 to={"/admin/advanced/upload-students"}>
                   <i className="fa fa-users" />
@@ -249,7 +200,6 @@ class Sidebar extends React.Component {
               <NavItem>
                 <NavLink 
                 tag={NavLinkRRD}
-                onClick={this.closeCollapse}
                 //activeclassName="active"
                 to={"/admin/advanced/upload-bussing-report"}>
                   <i className="fa fa-bus" />
@@ -259,7 +209,6 @@ class Sidebar extends React.Component {
               <NavItem>
                 <NavLink 
                 tag={NavLinkRRD}
-                onClick={this.closeCollapse}
                 //activeclassName="active"
                 to={"/admin/advanced/upload-center-service-report"}>
                   <i className="fa fa-users" />
@@ -314,7 +263,7 @@ class Sidebar extends React.Component {
                   <NavLink 
                   rel="noopener noreferrer" 
                   target="_blank"
-                  onClick={this.closeCollapse}
+                  
                   //activeclassName="active"
                   href="https://attendance.firstlovegallery.com/">
                     <i className="ni ni-check-bold" />
@@ -322,17 +271,14 @@ class Sidebar extends React.Component {
                   </NavLink>
                 </NavItem>
               </Nav>
-
-
-            
-            <Nav className="mb-md-3" navbar>
-              <NavItem className="active-pro active">
-                <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adr-admin-sidebar">
-                  <i className="ni ni-bold-right" />
-                  Logout
-                </NavLink>
-              </NavItem>
-            </Nav>
+              <Nav className="mb-md-3" navbar>
+                <NavItem>
+                  <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adr-admin-sidebar">
+                    <i className="ni ni-bold-right" />
+                    Logout
+                  </NavLink>
+                </NavItem>
+              </Nav>
           </Collapse>
         </Container>
       </Navbar>
