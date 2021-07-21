@@ -21,6 +21,7 @@ export default function StudentBussingInfo(){
     const [hideFilterOptions, setHideFilterOptions] = useState(false);
     const [bussingDate, setBussingDate] = useState("");
     const [loading, setLoading] = useState(false);
+    const LAST_SATURDAY = -1;
 
     
 
@@ -33,7 +34,7 @@ export default function StudentBussingInfo(){
     }
 
     useEffect(() => {
-        let defaultDate = moment().day('Saturday');
+        let defaultDate = moment().day(LAST_SATURDAY);
         setBussingDate(moment(defaultDate).format("YYYY-MM-DD"));
         getStudentBussingInfo(moment(defaultDate).format("YYYY-MM-DD"));
 

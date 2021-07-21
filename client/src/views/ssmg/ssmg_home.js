@@ -12,7 +12,8 @@ import {
 import Header from "components/Headers/Header_plain";
 import { BASE_URL } from "config/baseUrl";
 import axios from 'axios';
-import { Icon, Grid, Label } from 'semantic-ui-react'
+import { Icon, Grid, Label } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
 
 export default function SSMG_home(){
     const [tab, setTabValue] = useState(1);
@@ -99,17 +100,16 @@ export default function SSMG_home(){
                         <Container fluid>
                             <TabContent activeTab={"tabs" + tab}>
                                 <TabPane tabId="tabs1">
-                                    
-                                    <Grid columns={3} divided>
-                                        
+                                    <Grid columns={3} divided> 
                                         {
-                                            constituencies.map((item, index) =>
+                                            constituencies.map((item) =>
                                                 (
                                                 <Grid.Column key={item.id}>
-                                                    
-                                                    <Label size={'big'}>
-                                                    <Icon name='folder open' />
+                                                    <Label size={'large'} color={'blue'}>
+                                                        <Link to={"/admin/ssmg/constituencies?constituency="+item.region_name}>
+                                                        <Icon name='folder open' />
                                                         {item.region_name}
+                                                        </Link>
                                                     </Label> 
                                                 </Grid.Column>     
                                                 )

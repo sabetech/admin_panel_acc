@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Header_Plain from 'components/Headers/Header_plain';
 import {
-    Container,
     Card,
     CardHeader,
     CardBody,
@@ -10,7 +9,7 @@ import {
     Label
   } from "reactstrap";
   import { Bar } from "react-chartjs-2";
-  import { Icon, Label as SmLabel, Menu, Table } from 'semantic-ui-react';
+  import { Table } from 'semantic-ui-react';
   import DateRangePicker from 'react-bootstrap-daterangepicker';
   import moment from 'moment';
   import Typography from '@material-ui/core/Typography';
@@ -77,7 +76,7 @@ export default function ConstituencyDetail(){
            
             <Header_Plain title={"Constituency Rep: "+ regionInfo?.region_head || "Loading ..."}/>
             <Breadcrumbs aria-label="breadcrumb">
-                <Link color="inherit" to={'/admin/index'} href="/">
+                <Link color="inherit" to={'/admin/index'} href="/admin/index">
                     Dashboard
                 </Link>
                 <Typography color="textPrimary">Constituency Bussing Details</Typography>

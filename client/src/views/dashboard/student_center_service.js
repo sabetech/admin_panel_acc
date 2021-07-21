@@ -21,6 +21,7 @@ export default function StudentCenterService(){
     const [hideFilterOptions, setHideFilterOptions] = useState(false);
     const [serviceDate, setServiceDate] = useState("");
     const [loading, setLoading] = useState(false);
+    const LAST_THURSDAY = -3;
 
     const getStudentCenterServiceInfo = async (date) => {
         setLoading(true);
@@ -30,7 +31,7 @@ export default function StudentCenterService(){
     }
 
     useEffect(() => {
-        let defaultDate = moment().day('Thursday');
+        let defaultDate = moment().day(LAST_THURSDAY);
         setServiceDate(moment(defaultDate).format("YYYY-MM-DD"));
         getStudentCenterServiceInfo(moment(defaultDate).format("YYYY-MM-DD"));
 

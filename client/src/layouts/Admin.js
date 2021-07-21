@@ -50,6 +50,7 @@ class Admin extends React.Component {
   };
 
   getAppRoutes = app_routes => {
+    
     return app_routes.map((prop, key) => {
       return (
         <Route
@@ -57,9 +58,10 @@ class Admin extends React.Component {
           component={prop.component}
           key={key}
         />
-      )
-    });
+      )}
+    );
   }
+
   getBrandText = path => {
     for (let i = 0; i < routes.length; i++) {
       if (

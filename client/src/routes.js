@@ -37,6 +37,7 @@ import Constituencies from "components/Constituencies/constituencies";
 import AllConstituencyCharts from "views/dashboard/dashboard-details/constituency_all_charts";
 import StudentAttn from "views/students/student_attn";
 import SSMG_home from "views/ssmg/ssmg_home";
+import ConstituencySSMG from "views/ssmg/constituency_ssmg";
 import StudentCenterLeaders  from "views/students/student_center_leaders";
 import StudentSontaLeaders  from "views/students/student_sonta_leaders";
 import StudentBacentaLeaders from "views/students/student_bacenta_leaders";
@@ -166,6 +167,13 @@ export var app_routes = [
     name: "Constituency Bacenta Services",
     icon: "ni ni-tv-2 text-primary",
     component: ConstituencyCenterServiceDetail,
+    layout: '/admin'
+  },
+  {
+    path: "/ssmg/constituencies/",
+    name: "Constituency SSMG",
+    icon: "ni ni-tv-2 text-primary",
+    component: ConstituencySSMG,
     layout: '/admin'
   },
   {
