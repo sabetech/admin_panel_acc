@@ -106,7 +106,7 @@ export default function SSMG_home(){
                                                 (
                                                 <Grid.Column key={item.id}>
                                                     <Label size={'large'} color={'blue'}>
-                                                        <Link to={"/admin/ssmg/constituencies?constituency="+item.region_name}>
+                                                        <Link to={`/admin/ssmg/constituencies/${item.id}?constituency=${item.region_name}`}>
                                                         <Icon name='folder open' />
                                                         {item.region_name}
                                                         </Link>
