@@ -8,14 +8,11 @@ import {
 import {BASE_URL} from "../../config/baseUrl";
 import SSMG_ChartDisplay from "./ssmg_chart_display";
 
-export default function ConstituencySSMG() {
+export default function AllConstituencySSMG() {
  
     const location = useLocation();
     const pathName = location.pathname;
-    const requestUrl = BASE_URL+pathName;
-
-    const query = location.search;
-    const myParams = new URLSearchParams(query);
+    const requestUrl = BASE_URL+pathName+"/constituencies/0";
     
     const ssmg_array = [{
                             requestParam :'SAT',
@@ -128,20 +125,7 @@ export default function ConstituencySSMG() {
 
     return (
         <>
-            <Header_Plain title={myParams.get('constituency')}/>
-            <Breadcrumbs aria-label="breadcrumb">
-                
-                    <Link color="inherit" to={'/admin/index'} href="/admin/index">
-                        Dashboard
-                    </Link>
-                
-                
-                    <Link color="inherit" to={'/admin/ssmg'} href="/admin/ssmg">
-                        SSMG Home
-                    </Link>
-                
-                <Typography color="textPrimary">SSMG Constituency Details</Typography>
-            </Breadcrumbs>
+            <Header_Plain title="All Constituencies Combined"/>
             <Container>
                 {
                     ssmg_array.map((item, index) => <SSMG_ChartDisplay key={index} ssmg_name={item} requestUrl={requestUrl} />)

@@ -14,6 +14,7 @@ import { BASE_URL } from "config/baseUrl";
 import axios from 'axios';
 import { Icon, Grid, Label } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
+import AllConstituencySSMG from "./all_constituency_ssmg";
 
 export default function SSMG_home(){
     const [tab, setTabValue] = useState(1);
@@ -92,7 +93,7 @@ export default function SSMG_home(){
                                         role="tab"
                                     >
                                         <i className="ni ni-calendar-grid-58 mr-2" />
-                                        Messages
+                                        All Constituencies
                                     </NavLink>
                                 </NavItem>
                             </Nav>
@@ -121,7 +122,7 @@ export default function SSMG_home(){
                                     My Nice Tab two
                                 </TabPane>
                                 <TabPane tabId="tabs3">
-                                    My Nice Tab three
+                                    <AllConstituencySSMG />
                                 </TabPane>
                             </TabContent>
                         </Container>
