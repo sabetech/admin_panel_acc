@@ -16,7 +16,7 @@ import {
 import classnames from "classnames";
 import axios from 'axios';
 
-export default function SSMG_ChartDisplay({ssmg_name, requestUrl}) {
+export default function SSMG_ChartDisplay({ssmg_name, requestUrl, constituency}) {
     const [ssmgResult, setServerResponse] = useState({});
     const [chartLabels, setChartLabels] = useState([]);
     const [chartValues, setChartValues] = useState([]);
@@ -70,9 +70,9 @@ export default function SSMG_ChartDisplay({ssmg_name, requestUrl}) {
                     <CardHeader className="bg-transparent">
                         <Row className="align-items-center">
                             <div className="col">
-                                <h6 className="text-uppercase text-light ls-1 mb-1">
-                                    SSMG
-                                </h6>
+                                <h4 className="text-uppercase text-light ls-1 mb-1">
+                                    SSMG - {(typeof constituency !== 'undefined') ? constituency.region_name:""}
+                                </h4>
                                 <h2 className="text-white mb-0">{ssmg_name.readableName}</h2>
                             </div>
 

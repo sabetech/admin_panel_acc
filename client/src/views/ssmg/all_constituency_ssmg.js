@@ -125,7 +125,6 @@ export default function AllConstituencySSMG() {
 
     return (
         <>
-            <Header_Plain title="All Constituencies Combined"/>
             <Container>
                 {
                     ssmg_array.map((item, index) => <SSMG_ChartDisplay key={index} ssmg_name={item} requestUrl={requestUrl} />)

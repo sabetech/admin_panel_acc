@@ -7,7 +7,7 @@ import {
     Row, 
     CardBody,
     TabContent, TabPane,
-    Nav, NavItem, NavLink
+    Nav, NavItem, NavLink, Spinner
 } from "reactstrap";
 import Header from "components/Headers/Header_plain";
 import { BASE_URL } from "config/baseUrl";
@@ -15,10 +15,12 @@ import axios from 'axios';
 import { Icon, Grid, Label } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import AllConstituencySSMG from "./all_constituency_ssmg";
+import {ssmg_array} from "./campaigns";
 
 export default function SSMG_home(){
     const [tab, setTabValue] = useState(1);
-    const [constituencies, setConstituencies] = useState([])
+    const [constituencies, setConstituencies] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const toggleNavs = (e,tabValue) => {
         setTabValue(tabValue);
@@ -26,7 +28,7 @@ export default function SSMG_home(){
 
     //get all constituencies
     useEffect(() => {
-
+        setLoading(true);
         getAllConstituencies();
 
     },[]);
@@ -34,6 +36,7 @@ export default function SSMG_home(){
     const getAllConstituencies = async () => {
         const response = await axios.get(`${BASE_URL}/react_admin/admin/constituencies`);
         setConstituencies(response.data);
+        setLoading(false);
     }
 
     return (
@@ -44,7 +47,7 @@ export default function SSMG_home(){
                 <div className="col">
                     <Card className=" shadow">
                         <CardHeader className=" bg-transparent">
-                            <h3 className=" mb-0">{"SSMG"}</h3>
+                            <h3 className=" mb-0">{"SSMG"} {loading && <Spinner color="primary"/>}</h3>
                         </CardHeader>
                         <CardBody>
                         <div className="nav-wrapper">
@@ -119,7 +122,22 @@ export default function SSMG_home(){
                                     </Grid>
                                 </TabPane>
                                 <TabPane tabId="tabs2">
-                                    My Nice Tab two
+                                <Grid columns={3} divided> 
+                                        {
+                                            ssmg_array.map((item, index) =>
+                                                (
+                                                <Grid.Column key={index}>
+                                                    <Label size={'large'} color={'blue'}>
+                                                        <Link to={`/admin/ssmg/ssmg_campaign?ssmg_param=${item.requestParam}`}>
+                                                        <Icon name='folder open' />
+                                                        {item.readableName}
+                                                        </Link>
+                                                    </Label> 
+                                                </Grid.Column>     
+                                                )
+                                            )
+                                        }
+                                    </Grid>
                                 </TabPane>
                                 <TabPane tabId="tabs3">
                                     <AllConstituencySSMG />
