@@ -8,13 +8,53 @@ import {
     GridToolbarExport,
     
   } from '@material-ui/data-grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import {TextField, Checkbox, List, ListItem, ListItemText, MenuItem, Grid, Menu} from '@material-ui/core';
+
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Header from "components/Headers/Header.js";
 import {BASE_URL} from "../../config/baseUrl";
 import axios from "axios";
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      backgroundColor: theme.palette.background.paper,
+    },
+  }));
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
+
+const streams = [
+    '9 Months Program',
+    '18 Months Program',
+    '36 Months Program'
+  ];
+
 export default function MinistrySkills(){
+    const classes = useStyles();
     const [ministrySkills, setMinistrySkills] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [schClasses, setSchClasses] = useState([]);
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+
+    const handleClickListItem = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+    
+      const handleMenuItemClick = (event, index) => {
+        setSelectedIndex(index);
+        setAnchorEl(null);
+      };
+    
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
 
     const columns = [
         { field: 'index_number', headerName: 'Index Number', width: 100 },
@@ -91,12 +131,16 @@ export default function MinistrySkills(){
     //get ministry skills json from the server
     useEffect(()=>{
         
-        loadMinistrySkills();
+        //loadMinistrySkills();
 
         return () => {
             unmounted = true;
           }    
     },[]);
+
+    const getSchClasses = () => {
+        //get classes
+    }
 
     const loadMinistrySkills = () => {
         setLoading(true);
@@ -125,7 +169,79 @@ export default function MinistrySkills(){
           <Container className=" mt--7" fluid>
             <Card className="shadow">
                 <CardHeader className=" bg-transparent">
+                    <span>
                     <h3 className=" mb-0">Ministry Skills - {loading && <Spinner color="success" />}</h3>
+                    <Grid container spacing={2}>
+                        <Grid item xs={3}>
+                        <div className={classes.root} style={{ width: 250 }}>
+                        <List component="nav" aria-label="Device settings">
+                            <ListItem
+                                button
+                                aria-haspopup="true"
+                                aria-controls="lock-menu"
+                                aria-label="Class"
+                                onClick={handleClickListItem}
+                            >
+                            <ListItemText primary="Class" secondary={streams[selectedIndex]} />
+                            </ListItem>
+                        </List>
+                        <Menu
+                            id="lock-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            {streams.map((option, index) => (
+                            <MenuItem
+                                key={option}
+                                // disabled={index === 0}
+                                selected={index === selectedIndex}
+                                onClick={(event) => handleMenuItemClick(event, index)}
+                            >
+                                {option}
+                            </MenuItem>
+                            ))}
+                        </Menu>
+                        </div>
+                        </Grid>
+
+                        <Grid item xs={3}>
+                    <div className={classes.root} style={{ width: 250 }}>
+                        <List component="nav" aria-label="Device settings">
+                            <ListItem
+                                button
+                                aria-haspopup="true"
+                                aria-controls="lock-menu"
+                                aria-label="Stream"
+                                onClick={handleClickListItem}
+                            >
+                            <ListItemText primary="Stream" secondary={streams[selectedIndex]} />
+                            </ListItem>
+                        </List>
+                        <Menu
+                            id="lock-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            {streams.map((option, index) => (
+                            <MenuItem
+                                key={option}
+                                // disabled={index === 0}
+                                selected={index === selectedIndex}
+                                onClick={(event) => handleMenuItemClick(event, index)}
+                            >
+                                {option}
+                            </MenuItem>
+                            ))}
+                        </Menu>
+                        </div>
+                        </Grid>
+                        </Grid>
+
+                    </span>
                 </CardHeader>
                 <CardBody style={{ height: 700, width: '100%' }}>
                     <DataGrid 

@@ -82,6 +82,13 @@ class Sidebar extends React.Component {
           >
             <i className={prop.icon} />
             {prop.name}
+            {
+              (prop.name === "SSMG") ?
+                <Badge color="primary">New</Badge>
+                :
+                ""
+            }
+
           </NavLink>
         </NavItem>
       );

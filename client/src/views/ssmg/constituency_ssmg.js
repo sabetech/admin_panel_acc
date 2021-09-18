@@ -7,6 +7,7 @@ import {
   } from "reactstrap";
 import {BASE_URL} from "../../config/baseUrl";
 import SSMG_ChartDisplay from "./ssmg_chart_display";
+import {ssmg_array} from "./campaigns";
 
 export default function ConstituencySSMG() {
  
@@ -16,15 +17,6 @@ export default function ConstituencySSMG() {
 
     const query = location.search;
     const myParams = new URLSearchParams(query);
-    
-    const ssmg_array = [{
-                            requestParam :'SAT',
-                            readableName: 'Servants Armed And Trained'
-                        }, {
-                            requestParam:'HearingAndSeeing',
-                            readableName:'Hearing And Seeing'
-                        }
-                    ];
 
     return (
         <>

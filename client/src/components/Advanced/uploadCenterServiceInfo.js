@@ -71,7 +71,9 @@ export default function UploadCenterServiceInfo(){
     
           if (typeof value[2] === 'undefined') value[2] = 0;
           if (typeof value[3] === 'undefined') value[3] = 0;
-    
+
+          if (typeof value[4] === 'undefined') return;
+
           centerServiceInfo.push({
             id: count,
             index_number: value[4].substring(0, value[4].indexOf(" ")).trim(), //get index from spreadsheet column

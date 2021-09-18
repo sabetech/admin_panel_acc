@@ -16,7 +16,7 @@
 
 */
 import Index from "views/Index.js";
-import Profile from "views/examples/Profile.js";
+import SSMGCampaigns from "views/ssmg/ssmg_campaigns";
 import Maps from "views/examples/Maps.js";
 import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
@@ -174,6 +174,13 @@ export var app_routes = [
     name: "Constituency SSMG",
     icon: "ni ni-tv-2 text-primary",
     component: ConstituencySSMG,
+    layout: '/admin'
+  },
+  {
+    path: "/ssmg/ssmg_campaign",
+    name: "Campaign SSMG",
+    icon: "",
+    component: SSMGCampaigns,
     layout: '/admin'
   },
   {

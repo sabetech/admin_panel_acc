@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import { Link as Url_link } from "react-router-dom";
+import DateRangePicker from 'react-bootstrap-daterangepicker';
 import { Bar } from "react-chartjs-2";
+import moment from 'moment';
 
 import {
     Col,
@@ -15,10 +16,12 @@ import {
 import classnames from "classnames";
 import axios from 'axios';
 
-export default function SSMG_ChartDisplay({ssmg_name, requestUrl}) {
+export default function SSMG_ChartDisplay({ssmg_name, requestUrl, constituency}) {
     const [ssmgResult, setServerResponse] = useState({});
     const [chartLabels, setChartLabels] = useState([]);
     const [chartValues, setChartValues] = useState([]);
+    const [dateRange, setDateRange] = useState("Click to Choose Date Range");
+    const [dateRangeVal, setDateRangeVal] = useState(null);
 
     useEffect(() => {
        getSSMG_Info();
@@ -32,14 +35,32 @@ export default function SSMG_ChartDisplay({ssmg_name, requestUrl}) {
         setChartValues([...Object.values(ssmgResult.data)]);
     },[ssmgResult]);
 
+    useEffect(() => {
+
+        if (dateRangeVal == null) return;
+
+        getSSMG_Info();
+
+    }, [dateRangeVal]);
+
     //get ssmg
     const getSSMG_Info = async () => {
         try{   
-            const response = await axios.get(`${requestUrl}?ssmg=${ssmg_name.requestParam}`);
+            const response = await axios.get(`${requestUrl}?ssmg=${ssmg_name.requestParam}&date_range=${dateRangeVal}`);
             setServerResponse(response)
+            
         }catch(e){
             console.log(e);
         }
+    }
+
+    const handleEvent = (event, picker) => {
+        //console.log(picker.startDate);
+    }
+
+    const handleCallback = (start, end, label) => {
+        setDateRange("From: "+start.format("MMM DD, Y")+" to: "+end.format("MMM DD, Y"));
+        setDateRangeVal(start.format("Y-MM-DD")+" - "+end.format("Y-MM-DD"));
     }
 
     return(
@@ -49,9 +70,9 @@ export default function SSMG_ChartDisplay({ssmg_name, requestUrl}) {
                     <CardHeader className="bg-transparent">
                         <Row className="align-items-center">
                             <div className="col">
-                                <h6 className="text-uppercase text-light ls-1 mb-1">
-                                    SSMG
-                                </h6>
+                                <h4 className="text-uppercase text-light ls-1 mb-1">
+                                    SSMG - {(typeof constituency !== 'undefined') ? constituency.region_name:""}
+                                </h4>
                                 <h2 className="text-white mb-0">{ssmg_name.readableName}</h2>
                             </div>
 
@@ -63,7 +84,35 @@ export default function SSMG_ChartDisplay({ssmg_name, requestUrl}) {
                                             active: true
                                         })}
                                         >
-                                        <span className="d-none d-md-block">Options</span>
+                                        <DateRangePicker 
+                                            onEvent={handleEvent} onCallback={handleCallback}
+                                            initialSettings={{
+                                                ranges: {
+                                                  'Last 7 Days': [
+                                                    moment().subtract(6, 'days').toDate(),
+                                                    moment().toDate(),
+                                                  ],
+                                                  'Last 30 Days': [
+                                                    moment().subtract(29, 'days').toDate(),
+                                                    moment().toDate(),
+                                                  ],
+                                                  'This Month': [
+                                                    moment().startOf('month').toDate(),
+                                                    moment().endOf('month').toDate(),
+                                                  ],
+                                                  'Last Month': [
+                                                    moment().subtract(1, 'month').startOf('month').toDate(),
+                                                    moment().subtract(1, 'month').endOf('month').toDate(),
+                                                  ],
+                                                  'All Time': [
+                                                      moment().subtract(25, 'year').toDate(),
+                                                      moment().toDate()
+                                                  ]
+                                                },
+                                              }}
+                                        >
+                                            <span className="d-none d-md-block">{dateRange}</span>
+                                        </DateRangePicker>
                                         <span className="d-md-none">M</span>
                                         </NavLink>
                                     </NavItem>
