@@ -56,7 +56,7 @@ export default function SSMGCampaigns() {
             </Breadcrumbs>
             <Container>
                 {
-                    constituencies && ssmg_name && constituencies.map((item, index) => <SSMG_ChartDisplay key={index} ssmg_name={ssmg_name} requestUrl={requestUrl+item.id} constituency={item}/>)
+                    constituencies && ssmg_name && constituencies.map((item, index) => <SSMG_ChartDisplay key={index} ssmg_name={ssmg_name} requestUrl={requestUrl+item.id} constituency={item} source="campaign ssmg"/>)
                 }
             </Container>
         </>

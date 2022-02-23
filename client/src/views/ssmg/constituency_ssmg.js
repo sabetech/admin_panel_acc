@@ -36,7 +36,7 @@ export default function ConstituencySSMG() {
             </Breadcrumbs>
             <Container>
                 {
-                    ssmg_array.map((item, index) => <SSMG_ChartDisplay key={index} ssmg_name={item} requestUrl={requestUrl} />)
+                    ssmg_array.map((item, index) => <SSMG_ChartDisplay key={index} ssmg_name={item} requestUrl={requestUrl} source={"constituency ssmg"}/>)
                 }
             </Container>
         </>

@@ -16,7 +16,7 @@ import {
 import classnames from "classnames";
 import axios from 'axios';
 
-export default function SSMG_ChartDisplay({ssmg_name, requestUrl, constituency}) {
+export default function SSMG_ChartDisplay({ssmg_name, requestUrl, constituency, source}) {
     const [ssmgResult, setServerResponse] = useState({});
     const [chartLabels, setChartLabels] = useState([]);
     const [chartValues, setChartValues] = useState([]);
@@ -24,6 +24,7 @@ export default function SSMG_ChartDisplay({ssmg_name, requestUrl, constituency})
     const [dateRangeVal, setDateRangeVal] = useState(null);
 
     useEffect(() => {
+        console.log("source: "+source);
        getSSMG_Info();
     },[]);
 

@@ -140,7 +140,7 @@ export default function SSMG_home(){
                                     </Grid>
                                 </TabPane>
                                 <TabPane tabId="tabs3">
-                                    <AllConstituencySSMG />
+                                    <AllConstituencySSMG showCharts={tab===3}/>
                                 </TabPane>
                             </TabContent>
                         </Container>
